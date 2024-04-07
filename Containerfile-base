@@ -1,0 +1,7 @@
+ARG FEDORAVER=38
+FROM fedora:${FEDORAVER}
+RUN dnf upgrade -y -q && dnf install -q -y gcc make elfutils-libelf-devel git openssl-devel openssl pesign \
+        dos2unix findutils rpm-build rpmdevtools redhat-rpm-config rpmconf rpmconf-base dnf-plugins-core \
+        python3-pip wget python3-pem patch && \
+    rpmdev-setuptree && mkdir -p /work/output/x86_64 && mkdir -p /work/output/ia32 && \
+    pip install edk2-pytool-extensions
