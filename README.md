@@ -23,22 +23,32 @@ Here's the template:
 *******************************************************************************
 ### What organization or people are asking to have this signed?
 *******************************************************************************
-[your text here]
+Entsecure South East Asia Pte Ltd
 
 *******************************************************************************
 ### What product or service is this for?
 *******************************************************************************
-[your text here]
+Evren OS (https://evren.co/): a centrally managed secure desktop operating system for the enterprise
+(based heavily on Fedora architecture and base packages)
 
 *******************************************************************************
 ### What's the justification that this really does need to be signed for the whole world to be able to boot it?
 *******************************************************************************
-[your text here]
+Entsecure customers need to deploy EvrenOS with Secure Boot enabled.
+The customers are seeking a more secure managed desktop OS solution and want to
+use secure boot. EvrenOS is deployed in financial, gov and industrial organizations
+that require secure boot.
 
 *******************************************************************************
 ### Why are you unable to reuse shim from another distro that is already signed?
 *******************************************************************************
-[your text here]
+Entsecure wants to employ Secure Boot for building a trusted operating system
+from the ground up: from Shim, GRUB, kernel to kernel modules and TPM backed
+full disk encryption keys.
+
+Entsecure CA is used to sign Entsecure BootSigner certificate which is used to sign
+custom kernels and network drivers, and as such needs a signed shim with our
+certificate so that we can sign the drivers to allow users to keep Secure Boot on.
 
 *******************************************************************************
 ### Who is the primary contact for security updates, etc.?
@@ -47,10 +57,10 @@ The security contacts need to be verified before the shim can be accepted. For s
 An authorized reviewer will initiate contact verification by sending each security contact a PGP-encrypted email containing random words.
 You will be asked to post the contents of these mails in your `shim-review` issue to prove ownership of the email addresses and PGP keys.
 *******************************************************************************
-- Name:
-- Position:
-- Email address:
-- PGP key fingerprint:
+- Name: Fabrice A. Marie
+- Position: CTO
+- Email address: fabrice@evren.co
+- PGP key fingerprint: [1F75 D13E BDA3 77D8 DFC6  F6D6 DB5C 8B72 5B71 46CC](https://keyserver.ubuntu.com/pks/lookup?op=vindex&search=0xdb5c8b725b7146cc)
 
 (Key should be signed by the other security contacts, pushed to a keyserver
 like keyserver.ubuntu.com, and preferably have signatures that are reasonably
@@ -59,10 +69,10 @@ well known in the Linux community.)
 *******************************************************************************
 ### Who is the secondary contact for security updates, etc.?
 *******************************************************************************
-- Name:
-- Position:
-- Email address:
-- PGP key fingerprint:
+- Name: Kean Tan
+- Position: Technology Lead
+- Email address: kean.tan@evren.co
+- PGP key fingerprint: [8C1E A555 9448 D7BB 519F  E258 7595 CDBA FDBF 89BF](https://keyserver.ubuntu.com/pks/lookup?op=vindex&search=0x7595cdbafdbf89bf)
 
 (Key should be signed by the other security contacts, pushed to a keyserver
 like keyserver.ubuntu.com, and preferably have signatures that are reasonably
@@ -75,29 +85,30 @@ Please create your shim binaries starting with the 15.8 shim release tar file: h
 This matches https://github.com/rhboot/shim/releases/tag/15.8 and contains the appropriate gnu-efi source.
 
 *******************************************************************************
-[your text here]
+The binary is created from Fedora-39 shim-unsigned-15.8-2, itself
+pulling the official 15.8 shim release.
 
 *******************************************************************************
 ### URL for a repo that contains the exact code which was built to get this binary:
 *******************************************************************************
-[your url here]
+https://github.com/entsecure/shim
 
 *******************************************************************************
 ### What patches are being applied and why:
 *******************************************************************************
-[your text here]
+No patches have been applied. Only Entsecure's CA key embedding.
 
 *******************************************************************************
 ### Do you have the NX bit set in your shim? If so, is your entire boot stack NX-compatible and what testing have you done to ensure such compatibility?
 
 See https://techcommunity.microsoft.com/t5/hardware-dev-center/nx-exception-for-shim-community/ba-p/3976522 for more details on the signing of shim without NX bit.
 *******************************************************************************
-[your text here]
+NX bit is disabled for now until the entire Fedora boot stack become compatible.
 
 *******************************************************************************
 ### If shim is loading GRUB2 bootloader what exact implementation of Secureboot in GRUB2 do you have? (Either Upstream GRUB2 shim_lock verifier or Downstream RHEL/Fedora/Debian/Canonical-like implementation)
 *******************************************************************************
-[your text here]
+Downstream Fedora.
 
 *******************************************************************************
 ### If shim is loading GRUB2 bootloader and your previously released shim booted a version of GRUB2 affected by any of the CVEs in the July 2020, the March 2021, the June 7th 2022, the November 15th 2022, or 3rd of October 2023 GRUB2 CVE list, have fixes for all these CVEs been applied?
@@ -141,19 +152,20 @@ See https://techcommunity.microsoft.com/t5/hardware-dev-center/nx-exception-for-
   * CVE-2023-4693
   * CVE-2023-4692
 *******************************************************************************
-[your text here]
+The current builds contain the grub,3 fixes but not the NTFS fixes,
+but we don't build in the NTFS modules in our signed image.
 
 *******************************************************************************
 ### If shim is loading GRUB2 bootloader, and if these fixes have been applied, is the upstream global SBAT generation in your GRUB2 binary set to 4?
 The entry should look similar to: `grub,4,Free Software Foundation,grub,GRUB_UPSTREAM_VERSION,https://www.gnu.org/software/grub/`
 *******************************************************************************
-[your text here]
+No, it's grub,3.
 
 *******************************************************************************
 ### Were old shims hashes provided to Microsoft for verification and to be added to future DBX updates?
 ### Does your new chain of trust disallow booting old GRUB2 builds affected by the CVEs?
 *******************************************************************************
-[your text here]
+This is our first submission.
 
 *******************************************************************************
 ### If your boot chain of trust includes a Linux kernel:
@@ -161,63 +173,97 @@ The entry should look similar to: `grub,4,Free Software Foundation,grub,GRUB_UPS
 ### Is upstream commit [75b0cea7bf307f362057cc778efe89af4c615354 "ACPI: configfs: Disallow loading ACPI tables when locked down"](https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=75b0cea7bf307f362057cc778efe89af4c615354) applied?
 ### Is upstream commit [eadb2f47a3ced5c64b23b90fd2a3463f63726066 "lockdown: also lock down previous kgdb use"](https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=eadb2f47a3ced5c64b23b90fd2a3463f63726066) applied?
 *******************************************************************************
-[your text here]
+All of the appropriate commits are present.
+
+The configuration setting CONFIG_EFI_CUSTOM_SSDT_OVERLAYS is enabled, but since
+1957a85b0032a81e6482ca4aab883643b8dae06e is present,
+this is disabled when lockdown is on, as it is when Secure Boot is enabled.
 
 *******************************************************************************
 ### Do you build your signed kernel with additional local patches? What do they do?
 *******************************************************************************
-[your text here]
+We use unmodified Fedora upstream kernels. We provide additional out of tree
+kernel drivers for WiFi cards (lots of RTL cards) that need to be signed too.
 
 *******************************************************************************
 ### Do you use an ephemeral key for signing kernel modules?
 ### If not, please describe how you ensure that one kernel build does not load modules built for another kernel.
 *******************************************************************************
-[your text here]
+yes.
 
 *******************************************************************************
 ### If you use vendor_db functionality of providing multiple certificates and/or hashes please briefly describe your certificate setup.
 ### If there are allow-listed hashes please provide exact binaries for which hashes are created via file sharing service, available in public with anonymous access for verification.
 *******************************************************************************
-[your text here]
+No, We don't use vendor_db functionality
 
 *******************************************************************************
 ### If you are re-using a previously used (CA) certificate, you will need to add the hashes of the previous GRUB2 binaries exposed to the CVEs to vendor_dbx in shim in order to prevent GRUB2 from being able to chainload those older GRUB2 binaries. If you are changing to a new (CA) certificate, this does not apply.
 ### Please describe your strategy.
 *******************************************************************************
-[your text here]
+This is our first shim submission.
 
 *******************************************************************************
 ### What OS and toolchain must we use to reproduce this build?  Include where to find it, etc.  We're going to try to reproduce your build as closely as possible to verify that it's really a build of the source tree you tell us it is, so these need to be fairly thorough. At the very least include the specific versions of gcc, binutils, and gnu-efi which were used, and where to find those binaries.
 ### If the shim binaries can't be reproduced using the provided Dockerfile, please explain why that's the case and what the differences would be.
 *******************************************************************************
-[your text here]
+The build uses `podman` containers. To reproduce the build:
+
+- ensure podman is installed
+- as root, run `reproduce_build.sh`
+    - this will create a new log file called `03-build-reproduce.log`
 
 *******************************************************************************
 ### Which files in this repo are the logs for your build?
 This should include logs for creating the buildroots, applying patches, doing the build, creating the archives, etc.
 *******************************************************************************
-[your text here]
+
+- [01-build-base-build-img.log](01-build-base-build-img.log): logs for building the base podman image.
+- [02-shim-build.log](02-shim-build.log): logs for building the shim (using the base image created in step 1)
+- [03-build-reproduce.log](03-build-reproduce.log): logs of a test shim-rebuild that uses the base image too.
 
 *******************************************************************************
 ### What changes were made in the distro's secure boot chain since your SHIM was last signed?
 For example, signing new kernel's variants, UKI, systemd-boot, new certs, new CA, etc..
 *******************************************************************************
-[your text here]
+This is our first submission.
 
 *******************************************************************************
 ### What is the SHA256 hash of your final SHIM binary?
 *******************************************************************************
-[your text here]
+
+```shell
+sha256sum work/output/*/shim*.efi
+```
+
+```
+955cc405f30458e402e3c8f37e67cb4e741f02f22d4aa622e13a49434433becc  work/output/ia32/shimia32.efi
+dbd63ec4d78e922521f0726c9690c630b410096cf3bc6ffb9965ef22ea94f938  work/output/x86_64/shimx64.efi
+```
 
 *******************************************************************************
 ### How do you manage and protect the keys used in your SHIM?
 *******************************************************************************
-[your text here]
+Our setup includes a rootCA (`evren_securebootca_cert.der`) and a Boot Signer cert
+(`evren_secureboot_signer_cert.der`) signed by our rootCA.
+
+Both have their keys generated and locked in Google Cloud HSM (attestation attached).
+
+Nobody currently has permissions to access the rootCA keys now that the signer cert
+has been signed by the root CA: permission have been revoked immediaately after
+signature of the Boot Signer CSR.
+
+The signer cert key is only accessible automatically on GitHub action on 4 private repos:
+- kernel, grub, memtest86+v7, fwupd-efi
+- Google cloud applicative user key rotated every 3 months, saved as GitHub Action secret.
+- 2 approvals required to merge into master branch (triggering the build+signature process)
+- signed commits enforced, 2FA enforced.
+- Access/operations are audited (company is SOC2 and ISO27k certified)
 
 *******************************************************************************
 ### Do you use EV certificates as embedded certificates in the SHIM?
 *******************************************************************************
-[your text here]
+No.
 
 *******************************************************************************
 ### Do you add a vendor-specific SBAT entry to the SBAT section in each binary that supports SBAT metadata ( GRUB2, fwupd, fwupdate, systemd-boot, systemd-stub, UKI(s), shim + all child shim binaries )?
@@ -228,48 +274,120 @@ from Fedora or Debian), please preserve the SBAT entry from those distributions
 and only append your own. More information on how SBAT works can be found
 [here](https://github.com/rhboot/shim/blob/main/SBAT.md).
 *******************************************************************************
-[your text here]
+
+**Shim**
+```
+objcopy --only-section .sbat -O binary work/output/x86_64/shimx64.efi /dev/stdout
+```
+
+```
+sbat,1,SBAT Version,sbat,1,https://github.com/rhboot/shim/blob/main/SBAT.md
+shim,4,UEFI shim,shim,1,https://github.com/rhboot/shim
+shim.evren,1,Evren,shim,15.8,security@evren.co
+```
+
+**Grub2**
+```shell
+objcopy --only-section .sbat -O binary /boot/efi/EFI/fedora/grubx64.efi /dev/stdout 
+```
+
+```
+sbat,1,SBAT Version,sbat,1,https://github.com/rhboot/shim/blob/main/SBAT.md
+grub,3,Free Software Foundation,grub,2.06,https//www.gnu.org/software/grub/
+grub.rh,2,Red Hat,grub2,2.06-122.fc39,mailto:secalert@redhat.com
+grub.evren,1,Evren,grub2,2.06-122.ev39,mailto:security@evren.co
+```
+
+**fwupd-efi**
+```shell
+objcopy --only-section .sbat -O binary /usr/libexec/fwupd/efi/fwupdx64.efi /dev/stdout
+```
+
+```
+sbat,1,UEFI shim,sbat,1,https://github.com/rhboot/shim/blob/main/SBAT.md
+fwupd-efi,1,Firmware update daemon,fwupd-efi,1.5,https://github.com/fwupd/fwupd-efi
+fwupd-efi.evren,1,EvrenOS,fwupd-efi,1.5-1,security@evren.co
+```
+
+**memtest86+v7**
+```shell
+objcopy --only-section .sbat -O binary /boot/memtest.efi /dev/stdout
+```
+
+```
+sbat,1,SBAT Version,sbat,1,https://github.com/rhboot/shim/blob/main/SBAT.md
+memtest86+,1,Memtest86+,6.0,https://github.com/memtest86plus
+memtest86+.evren,1,Memtest86+,6.0,mailto:security@evren.co
+```
 
 *******************************************************************************
 ### If shim is loading GRUB2 bootloader, which modules are built into your signed GRUB2 image?
 *******************************************************************************
-[your text here]
+We use the latest fedora-39 grub2 RPM, modified to sign with our cert, no other modification made.
+
+```
+%global grub_modules  " all_video boot blscfg btrfs             \\\
+                        cat configfile cryptodisk               \\\
+                        echo ext2 f2fs fat font                 \\\
+                        gcry_rijndael gcry_rsa gcry_serpent     \\\
+                        gcry_sha256 gcry_twofish gcry_whirlpool \\\
+                        gfxmenu gfxterm gzio                    \\\
+                        halt hfsplus http increment iso9660     \\\
+                        jpeg loadenv loopback linux lvm luks    \\\
+                        luks2                                   \\\
+                        memdisk                                 \\\
+                        mdraid09 mdraid1x minicmd net           \\\
+                        normal part_apple part_msdos part_gpt   \\\
+                        password_pbkdf2 pgp png reboot regexp   \\\
+                        search search_fs_uuid search_fs_file    \\\
+                        search_label serial sleep               \\\
+                        squash4                                 \\\
+                        syslinuxcfg                             \\\
+                        test tftp version video xfs zstd "
+```
 
 *******************************************************************************
 ### If you are using systemd-boot on arm64 or riscv, is the fix for [unverified Devicetree Blob loading](https://github.com/systemd/systemd/security/advisories/GHSA-6m6p-rjcq-334c) included?
 *******************************************************************************
-[your text here]
+we are not using systemd-boot.
 
 *******************************************************************************
 ### What is the origin and full version number of your bootloader (GRUB2 or systemd-boot or other)?
 *******************************************************************************
-[your text here]
+grub2-efi-x64-2.06-122.ev39.x86_64 (= Fedora grub2-efi-x64-2.06-118.fc39.x86_64 + Evren signature)
 
 *******************************************************************************
 ### If your SHIM launches any other components, please provide further details on what is launched.
 *******************************************************************************
-[your text here]
+shim only launches:
+
+- our kernel
+- memtest+86 v7
+- fwupd-efi
 
 *******************************************************************************
 ### If your GRUB2 or systemd-boot launches any other binaries that are not the Linux kernel in SecureBoot mode, please provide further details on what is launched and how it enforces Secureboot lockdown.
 *******************************************************************************
-[your text here]
+
+No other binaries.
 
 *******************************************************************************
 ### How do the launched components prevent execution of unauthenticated code?
 *******************************************************************************
-[your text here]
+GRUB2 verifies signatures on booted kernels via shim, all the other expected
+components are both verified by secureboot signatures and SBAT verification
 
 *******************************************************************************
 ### Does your SHIM load any loaders that support loading unsigned kernels (e.g. GRUB2)?
 *******************************************************************************
-[your text here]
+No
 *******************************************************************************
 ### What kernel are you using? Which patches does it includes to enforce Secure Boot?
 *******************************************************************************
-[your text here]
+kernel-6.7.10-201.ev.fc39.x86_64 (= Fedora 39 kernel 6.7.10-200 + Evren signature)
 
 *******************************************************************************
 ### Add any additional information you think we may need to validate this shim.
 *******************************************************************************
-[your text here]
+We essentially build on top of Fedora packages. When they release an update
+on core system or boot packages, we compare,test,sign, and finally release.
