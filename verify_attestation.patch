@@ -1,0 +1,18 @@
+--- verify_attestation.py.old	2024-04-04 17:48:22.274495655 +0800
++++ verify_attestation.py	2024-04-04 17:48:45.508755722 +0800
+@@ -23,6 +23,7 @@
+ # [START kms_verify_attestations]
+ import argparse
+ import gzip
++import sys
+ 
+ from cryptography import exceptions
+ from cryptography import x509
+@@ -87,5 +88,7 @@
+ 
+     if verify(args.attestation_file, args.bundle_file):
+         print("Signature verified.")
++        sys.exit(0)
+     else:
+         print("Signature verification failed.")
++        sys.exit(1)
