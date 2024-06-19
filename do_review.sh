@@ -96,4 +96,7 @@ echo "::review objdump -- start"
 for name in $(find /work/output/ -type f -name "shim*.efi"); do objdump -h $name; done
 echo -e "::review objdump -- end\n\n"
 
-echo -e "review complete. Please check 03-build-reproduce.log\n\n"
+echo "Copying all build files from container to user's work directory"
+/usr/bin/cp -ar /work/* /work2
+
+echo -e "review complete. Please check work/output/review.txt\n\n"

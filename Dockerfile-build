@@ -1,0 +1,19 @@
+ARG SHIM_VERSION
+FROM evren/shim-img:v${SHIM_VERSION}
+
+ARG SHIM_ARCHIVE_URL
+ARG SHIM_ARCHIVE_FILE
+ARG SHIM_ARCHIVE_SHA256
+ENV SHIM_ARCHIVE_URL=${SHIM_ARCHIVE_URL}
+ENV SHIM_ARCHIVE_FILE=${SHIM_ARCHIVE_FILE}
+ENV SHIM_ARCHIVE_SHA256=${SHIM_ARCHIVE_SHA256}
+
+RUN wget --no-verbose ${SHIM_ARCHIVE_URL} \
+        -O /root/rpmbuild/SOURCES/${SHIM_ARCHIVE_FILE} && \
+    echo "${SHIM_ARCHIVE_SHA256} /root/rpmbuild/SOURCES/${SHIM_ARCHIVE_FILE}" | \
+        sha256sum -c
+COPY sbat.evren.csv evren_securebootca_cert.der \
+    shim.patches shim-find-debuginfo.sh patches/* /root/rpmbuild/SOURCES/
+COPY shim-unsigned-x64.spec /root/rpmbuild/SPECS/
+RUN rpmbuild -ba /root/rpmbuild/SPECS/shim-unsigned-x64.spec
+CMD cp -ar /root/rpmbuild/RPMS/ /output/
