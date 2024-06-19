@@ -1,4 +1,4 @@
-ARG FEDORAVER=38
+ARG FEDORAVER
 FROM fedora:${FEDORAVER}
 RUN dnf upgrade -y -q && dnf install -q -y gcc make elfutils-libelf-devel git openssl-devel openssl pesign \
         dos2unix findutils rpm-build rpmdevtools redhat-rpm-config rpmconf rpmconf-base dnf-plugins-core \

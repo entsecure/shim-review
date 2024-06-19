@@ -1,5 +1,18 @@
-ARG SHIM_VERSION=15.8
+ARG SHIM_VERSION
 FROM evren/shim-img:v${SHIM_VERSION}
+
+ARG SHIM_ARCHIVE_URL
+ARG SHIM_ARCHIVE_FILE
+ARG SHIM_ARCHIVE_SHA256
+ARG VERIFY_ATTESTATION_SCRIPT_URL
+ARG PARSE_VERIFIED_ATTESTATION_SCRIPT_URL
+
+ENV SHIM_ARCHIVE_URL=${SHIM_ARCHIVE_URL}
+ENV SHIM_ARCHIVE_FILE=${SHIM_ARCHIVE_FILE}
+ENV SHIM_ARCHIVE_SHA256=${SHIM_ARCHIVE_SHA256}
+ENV VERIFY_ATTESTATION_SCRIPT_URL=${VERIFY_ATTESTATION_SCRIPT_URL}
+ENV PARSE_VERIFIED_ATTESTATION_SCRIPT_URL=${PARSE_VERIFIED_ATTESTATION_SCRIPT_URL}
+
 RUN wget --no-verbose ${SHIM_ARCHIVE_URL} \
         -O /root/rpmbuild/SOURCES/${SHIM_ARCHIVE_FILE} && \
     echo "${SHIM_ARCHIVE_SHA256} /root/rpmbuild/SOURCES/${SHIM_ARCHIVE_FILE}" | \
@@ -24,4 +37,5 @@ RUN rpm -qa | tee /work/output/builder-packages.txt && \
     rpm2cpio /root/rpmbuild/RPMS/x86_64/shim-unsigned-x64-*.x86_64.rpm | cpio -idmv && \
     cp ./usr/share/shim/*/x64/shimx64.efi /work/output/x86_64/ && \
     cp ./usr/share/shim/*/ia32/shimia32.efi /work/output/ia32/
-RUN cd / && chmod 755 ./do_review.sh && ./do_review.sh
+RUN cd / && chmod 755 ./do_review.sh
+CMD cd / && ./do_review.sh

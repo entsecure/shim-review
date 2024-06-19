@@ -170,7 +170,8 @@ Downstream Fedora.
   * CVE-2023-4692
 *******************************************************************************
 The current builds contain the grub,3 fixes but not the NTFS fixes,
-but we don't build in the NTFS modules in our signed image.
+but we don't build in the NTFS modules in our signed image (our grub2 source RPM is Fedora
+grub2 source RPM but signed by our keys).
 
 *******************************************************************************
 ### If shim is loading GRUB2 bootloader, and if these fixes have been applied, is the upstream global SBAT generation in your GRUB2 binary set to 4?
@@ -236,8 +237,7 @@ If your shim binaries can't be reproduced using the provided Dockerfile, please 
 *******************************************************************************
 The build uses `podman` containers. To reproduce the build:
 
-- ensure podman is installed
-- as root, run `reproduce_build.sh`
+- run `./reproduce_build.sh` as a regular user, it will use docker build + run to reproduce the build
     - this will create a new log file called `03-build-reproduce.log`
 
 *******************************************************************************
@@ -247,7 +247,6 @@ This should include logs for creating the buildroots, applying patches, doing th
 
 - [01-build-base-build-img.log](01-build-base-build-img.log): logs for building the base podman image.
 - [02-shim-build.log](02-shim-build.log): logs for building the shim (using the base image created in step 1)
-- [03-build-reproduce.log](03-build-reproduce.log): logs of a test shim-rebuild that uses the base image too.
 
 *******************************************************************************
 ### What changes were made in the distro's secure boot chain since your SHIM was last signed?
@@ -262,12 +261,12 @@ This is our first submission.
 *******************************************************************************
 
 ```shell
-sha256sum work/output/*/shim*.efi
+sha256sum shim*.efi
 ```
 
 ```
-955cc405f30458e402e3c8f37e67cb4e741f02f22d4aa622e13a49434433becc  work/output/ia32/shimia32.efi
-dbd63ec4d78e922521f0726c9690c630b410096cf3bc6ffb9965ef22ea94f938  work/output/x86_64/shimx64.efi
+38aae1b3bb9c31bd2c373071a88c19c46790087db680994f1110e025ca512b8c  shimia32.efi
+83b2eca6a857b1c0a1c2190c5f48992646211faa8c63b1cebd759fe99bee7780  shimx64.efi
 ```
 
 *******************************************************************************
@@ -310,7 +309,7 @@ Hint: run `objcopy --only-section .sbat -O binary YOUR_EFI_BINARY /dev/stdout` t
 
 **Shim**
 ```
-objcopy --only-section .sbat -O binary work/output/x86_64/shimx64.efi /dev/stdout
+objcopy --only-section .sbat -O binary shimx64.efi /dev/stdout
 ```
 
 ```
@@ -327,7 +326,7 @@ objcopy --only-section .sbat -O binary /boot/efi/EFI/fedora/grubx64.efi /dev/std
 ```
 sbat,1,SBAT Version,sbat,1,https://github.com/rhboot/shim/blob/main/SBAT.md
 grub,3,Free Software Foundation,grub,2.06,https//www.gnu.org/software/grub/
-grub.rh,2,Red Hat,grub2,2.06-122.fc39,mailto:secalert@redhat.com
+grub.rh,2,Red Hat,grub2,2.06-122.ev39,mailto:secalert@redhat.com
 grub.evren,1,Evren,grub2,2.06-122.ev39,mailto:security@evren.co
 ```
 
@@ -338,8 +337,8 @@ objcopy --only-section .sbat -O binary /usr/libexec/fwupd/efi/fwupdx64.efi /dev/
 
 ```
 sbat,1,UEFI shim,sbat,1,https://github.com/rhboot/shim/blob/main/SBAT.md
-fwupd-efi,1,Firmware update daemon,fwupd-efi,1.5,https://github.com/fwupd/fwupd-efi
-fwupd-efi.evren,1,EvrenOS,fwupd-efi,1.5-1,security@evren.co
+fwupd-efi,1,Firmware update daemon,fwupd-efi,1.6,https://github.com/fwupd/fwupd-efi
+fwupd-efi.evren,1,EvrenOS,fwupd-efi,1.6-2,security@evren.co
 ```
 
 **memtest86+v7**
@@ -423,7 +422,7 @@ No
 *******************************************************************************
 ### What kernel are you using? Which patches and configuration does it include to enforce Secure Boot?
 *******************************************************************************
-[your text here]
+kernel-6.8.11-301.ev.fc39.x86_64 (= Fedora kernel-6.8.11-300.fc39.x86_64 + Evren signature)
 
 *******************************************************************************
 ### What contributions have you made to help us review the applications of other applicants?
@@ -433,10 +432,19 @@ A reasonable timeframe of waiting for a review can reach 2-3 months. Helping us 
 
 For newcomers, the applications labeled as [*easy to review*](https://github.com/rhboot/shim-review/issues?q=is%3Aopen+is%3Aissue+label%3A%22easy+to+review%22) are recommended to start the contribution process.
 *******************************************************************************
-[your text here]
+We embrace totally that mentality and have contributed in the past to a few reviews:
+
+- https://github.com/rhboot/shim-review/issues/387 (Mariner)
+- https://github.com/rhboot/shim-review/issues/396 (LUX)
+- https://github.com/rhboot/shim-review/issues/405 (Policorp Linux)
+- https://github.com/rhboot/shim-review/issues/406 (Virtuozzo Linux)
+- https://github.com/rhboot/shim-review/issues/408 (ZeronsoftN)
+- https://github.com/rhboot/shim-review/issues/411 (Cisco)
+
+We will of course continue to contribute as much as time permits.
 
 *******************************************************************************
 ### Add any additional information you think we may need to validate this shim signing application.
 *******************************************************************************
 We essentially build on top of Fedora packages. When they release an update
-on core system or boot packages, we compare,test,sign, and finally release.
+on core system or boot packages, we compare, test, sign, and finally release the updates too.
