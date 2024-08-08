@@ -235,10 +235,13 @@ Hint: Prefer using *frozen* packages for your toolchain, since an update to GCC,
 
 If your shim binaries can't be reproduced using the provided Dockerfile, please explain why that's the case, what the differences would be and what build environment (OS and toolchain) is being used to reproduce this build? In this case please write a detailed guide, how to setup this build environment from scratch.
 *******************************************************************************
-The build uses `podman` containers. To reproduce the build:
 
-- run `./reproduce_build.sh` as a regular user, it will use docker build + run to reproduce the build
-    - this will create a new log file called `03-build-reproduce.log`
+- You can use `docker build .`.
+    - If you want logs captured, just use `./reproduce_build.sh`
+      (it uses `docker build .` and redirects the output
+      to the log file `03-build-reproduce.log`
+- output designed to help the reviewer can be searched
+  in the logfile, stanzas start with the word `:review`
 
 *******************************************************************************
 ### Which files in this repo are the logs for your build?
@@ -265,8 +268,8 @@ sha256sum shim*.efi
 ```
 
 ```
-38aae1b3bb9c31bd2c373071a88c19c46790087db680994f1110e025ca512b8c  shimia32.efi
-83b2eca6a857b1c0a1c2190c5f48992646211faa8c63b1cebd759fe99bee7780  shimx64.efi
+4e5c54f6dcb71f65d8f3a5fce63d73e1792612e33df6f334539b3317a0cb007b  shimia32.efi
+7d176c33b6d59f39f2bfcebb5835a31515a26f93ac69292b6b678fecda4ac367  shimx64.efi
 ```
 
 *******************************************************************************
@@ -279,11 +282,11 @@ Our setup includes a rootCA (`evren_securebootca_cert.der`) and a Boot Signer ce
 Both have their keys generated and locked in Google Cloud HSM (attestation attached).
 
 Nobody currently has permissions to access the rootCA keys now that the signer cert
-has been signed by the root CA: permission have been revoked immediaately after
+has been signed by the root CA: permission have been revoked immediately after
 signature of the Boot Signer CSR.
 
 The signer cert key is only accessible automatically on GitHub action on 4 private repos:
-- kernel, grub, memtest86+v7, fwupd-efi
+- kernel, grub, fwupd-efi
 - Google cloud applicative user key rotated every 3 months, saved as GitHub Action secret.
 - 2 approvals required to merge into master branch (triggering the build+signature process)
 - signed commits enforced, 2FA enforced.
@@ -341,17 +344,6 @@ fwupd-efi,1,Firmware update daemon,fwupd-efi,1.6,https://github.com/fwupd/fwupd-
 fwupd-efi.evren,1,EvrenOS,fwupd-efi,1.6-2,security@evren.co
 ```
 
-**memtest86+v7**
-```shell
-objcopy --only-section .sbat -O binary /boot/memtest.efi /dev/stdout
-```
-
-```
-sbat,1,SBAT Version,sbat,1,https://github.com/rhboot/shim/blob/main/SBAT.md
-memtest86+,1,Memtest86+,6.0,https://github.com/memtest86plus
-memtest86+.evren,1,Memtest86+,6.0,mailto:security@evren.co
-```
-
 *******************************************************************************
 ### If shim is loading GRUB2 bootloader, which modules are built into your signed GRUB2 image?
 Skip this, if you're not using GRUB2.
@@ -391,6 +383,7 @@ we are not using systemd-boot.
 *******************************************************************************
 grub2-efi-x64-2.06-122.ev39.x86_64 (= Fedora grub2-efi-x64-2.06-118.fc39.x86_64 + Evren signature)
 
+
 *******************************************************************************
 ### If your shim launches any other components apart from your bootloader, please provide further details on what is launched.
 Hint: The most common case here will be a firmware updater like fwupd.
@@ -398,7 +391,6 @@ Hint: The most common case here will be a firmware updater like fwupd.
 shim only launches:
 
 - our kernel
-- memtest+86 v7
 - fwupd-efi
 
 *******************************************************************************

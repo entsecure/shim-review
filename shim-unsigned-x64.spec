@@ -23,19 +23,18 @@
 %global __debug_install_post %{SOURCE100} %{efiarch} %{efialtarch}
 %undefine _debuginfo_subpackages
 
-# currently here's what's in our dbx: nothing
-%global dbxfile %{nil}
+%global dbxfile evren_dbx.esl
 
 Name:		shim-unsigned-%{efiarch}
 Version:	15.8
-Release:	3
+Release:	4
 Summary:	First-stage UEFI bootloader
 ExclusiveArch:	x86_64
 License:	BSD
 URL:		https://github.com/rhboot/shim
 Source0:	https://github.com/rhboot/shim/releases/download/%{version}%{?dashpre}/shim-%{version}%{?dotpre}.tar.bz2
 Source1:	evren_securebootca_cert.der
-%if 0%{?dbxfile}
+%if "%{?dbxfile}" != ""
 Source2:	%{dbxfile}
 %endif
 Source3:	sbat.evren.csv
@@ -116,7 +115,7 @@ MAKEFLAGS+=" %{_smp_mflags} "
 if [ -f "%{SOURCE1}" ]; then
 	MAKEFLAGS="$MAKEFLAGS VENDOR_CERT_FILE=%{SOURCE1} "
 fi
-%if 0%{?dbxfile}
+%if "%{?dbxfile}" != ""
 if [ -f "%{SOURCE2}" ]; then
 	MAKEFLAGS="$MAKEFLAGS VENDOR_DBX_FILE=%{SOURCE2} "
 fi
@@ -143,7 +142,7 @@ MAKEFLAGS+="ENABLE_SHIM_HASH=true OSLABEL=Evren "
 if [ -f "%{SOURCE1}" ]; then
 	MAKEFLAGS="$MAKEFLAGS VENDOR_CERT_FILE=%{SOURCE1} "
 fi
-%if 0%{?dbxfile}
+%if "%{?dbxfile}" != ""
 if [ -f "%{SOURCE2}" ]; then
 	MAKEFLAGS="$MAKEFLAGS VENDOR_DBX_FILE=%{SOURCE2} "
 fi
@@ -191,6 +190,10 @@ cd ..
 %files debugsource -f build-%{efiarch}/debugsource.list
 
 %changelog
+* Wed Aug 07 2024 Evren Release Engineering <maintainer@evren.co> - 15.8-4
+- Use a new evren bootsigner key
+- Revoked the old one
+
 * Thu Apr 04 2024 Evren Release Engineering <maintainer@evren.co> - 15.8-3
 - Use Evren's key
 

@@ -1,4 +1,4 @@
-FEDORAVER=39
+FEDORAVER=40
 SHIM_VERSION=15.8
 SHIM_ARCHIVE_URL=https://github.com/rhboot/shim/releases/download/${SHIM_VERSION}/shim-${SHIM_VERSION}.tar.bz2
 SHIM_ARCHIVE_FILE=shim-${SHIM_VERSION}.tar.bz2
