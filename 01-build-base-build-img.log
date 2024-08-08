@@ -1,422 +1,461 @@
 #0 building with "default" instance using docker driver
 
 #1 [internal] load build definition from Dockerfile-base
-#1 transferring dockerfile: 533B done
+#1 transferring dockerfile: 611B done
+#1 WARN: InvalidDefaultArgInFrom: Default value for ARG fedora:${FEDORAVER} results in empty or invalid base image name (line 2)
 #1 DONE 0.1s
 
-#2 [internal] load metadata for docker.io/library/fedora:39
-#2 DONE 5.2s
+#2 [internal] load metadata for docker.io/library/fedora:40
+#2 ...
 
-#3 [internal] load .dockerignore
-#3 transferring context: 2B done
-#3 DONE 0.2s
+#3 [auth] library/fedora:pull token for registry-1.docker.io
+#3 DONE 0.0s
 
-#4 [1/2] FROM docker.io/library/fedora:39@sha256:ee042eb5527cfe117d279af0fff4461ad0c5441a8ef36deea9d98a2eb0130a90
-#4 resolve docker.io/library/fedora:39@sha256:ee042eb5527cfe117d279af0fff4461ad0c5441a8ef36deea9d98a2eb0130a90 0.1s done
-#4 sha256:ee042eb5527cfe117d279af0fff4461ad0c5441a8ef36deea9d98a2eb0130a90 1.25kB / 1.25kB done
-#4 sha256:350597304dc258176dfa7676fc64b7876a1550ace4fd2a29ef884c0c4f8f5074 529B / 529B done
-#4 sha256:64a2c4cfa9c677c63c126911722a36435899a12d49688060c9f69990cec7782e 2.00kB / 2.00kB done
-#4 sha256:137963121e370752342e769f362b03097609225e3ab36a2e489546aa6eb7ad09 0B / 64.66MB 0.1s
-#4 sha256:137963121e370752342e769f362b03097609225e3ab36a2e489546aa6eb7ad09 4.19MB / 64.66MB 0.5s
-#4 sha256:137963121e370752342e769f362b03097609225e3ab36a2e489546aa6eb7ad09 10.49MB / 64.66MB 0.6s
-#4 sha256:137963121e370752342e769f362b03097609225e3ab36a2e489546aa6eb7ad09 20.97MB / 64.66MB 0.8s
-#4 sha256:137963121e370752342e769f362b03097609225e3ab36a2e489546aa6eb7ad09 26.21MB / 64.66MB 0.9s
-#4 sha256:137963121e370752342e769f362b03097609225e3ab36a2e489546aa6eb7ad09 36.70MB / 64.66MB 1.1s
-#4 sha256:137963121e370752342e769f362b03097609225e3ab36a2e489546aa6eb7ad09 41.94MB / 64.66MB 1.2s
-#4 sha256:137963121e370752342e769f362b03097609225e3ab36a2e489546aa6eb7ad09 54.53MB / 64.66MB 1.4s
-#4 sha256:137963121e370752342e769f362b03097609225e3ab36a2e489546aa6eb7ad09 64.66MB / 64.66MB 1.6s
-#4 sha256:137963121e370752342e769f362b03097609225e3ab36a2e489546aa6eb7ad09 64.66MB / 64.66MB 2.4s done
-#4 extracting sha256:137963121e370752342e769f362b03097609225e3ab36a2e489546aa6eb7ad09
-#4 extracting sha256:137963121e370752342e769f362b03097609225e3ab36a2e489546aa6eb7ad09 5.2s
-#4 extracting sha256:137963121e370752342e769f362b03097609225e3ab36a2e489546aa6eb7ad09 5.3s done
-#4 DONE 8.3s
+#2 [internal] load metadata for docker.io/library/fedora:40
+#2 DONE 3.4s
 
-#5 [2/2] RUN dnf upgrade -y -q && dnf install -q -y gcc make elfutils-libelf-devel git openssl-devel openssl pesign         dos2unix findutils rpm-build rpmdevtools redhat-rpm-config rpmconf rpmconf-base dnf-plugins-core         python3-pip wget python3-pem patch &&     rpmdev-setuptree && mkdir -p /work/output/x86_64 && mkdir -p /work/output/ia32 &&     pip install edk2-pytool-extensions
-#5 80.84 
-#5 80.84 Upgraded:
-#5 80.84   audit-libs-3.1.3-1.fc39.x86_64          curl-8.2.1-5.fc39.x86_64             
-#5 80.84   fedora-gpg-keys-39-2.noarch             fedora-repos-39-2.noarch             
-#5 80.84   glib2-2.78.6-1.fc39.x86_64              libarchive-3.7.1-2.fc39.x86_64       
-#5 80.84   libcurl-8.2.1-5.fc39.x86_64             libgcc-13.3.1-1.fc39.x86_64          
-#5 80.84   libgomp-13.3.1-1.fc39.x86_64            libsolv-0.7.29-1.fc39.x86_64         
-#5 80.84   libstdc++-13.3.1-1.fc39.x86_64          openldap-2.6.7-1.fc39.x86_64         
-#5 80.84   python3-3.12.3-2.fc39.x86_64            python3-libs-3.12.3-2.fc39.x86_64    
-#5 80.84   rpm-sequoia-1.6.0-3.fc39.x86_64         systemd-libs-254.13-1.fc39.x86_64    
-#5 80.84   tpm2-tss-4.0.2-1.fc39.x86_64            vim-data-2:9.1.393-1.fc39.noarch     
-#5 80.84   vim-minimal-2:9.1.393-1.fc39.x86_64    
-#5 80.84 Installed:
-#5 80.84   libtool-ltdl-2.4.7-7.fc39.x86_64                                              
-#5 80.84 
-#5 143.9 
-#5 143.9 Installed:
-#5 143.9   annobin-docs-12.51-1.fc39.noarch                                              
-#5 143.9   annobin-plugin-gcc-12.51-1.fc39.x86_64                                        
-#5 143.9   ansible-srpm-macros-1-12.fc39.noarch                                          
-#5 143.9   binutils-2.40-14.fc39.x86_64                                                  
-#5 143.9   binutils-gold-2.40-14.fc39.x86_64                                             
-#5 143.9   bzip2-1.0.8-16.fc39.x86_64                                                    
-#5 143.9   cpio-2.14-4.fc39.x86_64                                                       
-#5 143.9   cpp-13.3.1-1.fc39.x86_64                                                      
-#5 143.9   crypto-policies-scripts-20231204-1.git1e3a2e4.fc39.noarch                     
-#5 143.9   cryptsetup-libs-2.6.1-3.fc39.x86_64                                           
-#5 143.9   dbus-1:1.14.10-1.fc39.x86_64                                                  
-#5 143.9   dbus-broker-36-2.fc39.x86_64                                                  
-#5 143.9   dbus-common-1:1.14.10-1.fc39.noarch                                           
-#5 143.9   dbus-libs-1:1.14.10-1.fc39.x86_64                                             
-#5 143.9   debugedit-5.0-12.fc39.x86_64                                                  
-#5 143.9   device-mapper-1.02.197-1.fc39.x86_64                                          
-#5 143.9   device-mapper-libs-1.02.197-1.fc39.x86_64                                     
-#5 143.9   diffutils-3.10-3.fc39.x86_64                                                  
-#5 143.9   dnf-plugins-core-4.6.0-1.fc39.noarch                                          
-#5 143.9   dos2unix-7.5.0-2.fc39.x86_64                                                  
-#5 143.9   dracut-059-16.fc39.x86_64                                                     
-#5 143.9   dwz-0.15-3.fc39.x86_64                                                        
-#5 143.9   ed-1.19-4.fc39.x86_64                                                         
-#5 143.9   efi-srpm-macros-5-9.fc39.noarch                                               
-#5 143.9   efivar-libs-39-1.fc39.x86_64                                                  
-#5 143.9   elfutils-0.191-2.fc39.x86_64                                                  
-#5 143.9   elfutils-debuginfod-client-0.191-2.fc39.x86_64                                
-#5 143.9   elfutils-libelf-devel-0.191-2.fc39.x86_64                                     
-#5 143.9   emacs-filesystem-1:29.3-1.fc39.noarch                                         
-#5 143.9   fakeroot-1.34-1.fc39.x86_64                                                   
-#5 143.9   fakeroot-libs-1.34-1.fc39.x86_64                                              
-#5 143.9   file-5.44-5.fc39.x86_64                                                       
-#5 143.9   fonts-filesystem-1:2.0.5-12.fc39.noarch                                       
-#5 143.9   fonts-srpm-macros-1:2.0.5-12.fc39.noarch                                      
-#5 143.9   forge-srpm-macros-0.3.1-1.fc39.noarch                                         
-#5 143.9   fpc-srpm-macros-1.3-8.fc39.noarch                                             
-#5 143.9   fuse-libs-2.9.9-17.fc39.x86_64                                                
-#5 143.9   gc-8.2.2-4.fc39.x86_64                                                        
-#5 143.9   gcc-13.3.1-1.fc39.x86_64                                                      
-#5 143.9   gcc-plugin-annobin-13.3.1-1.fc39.x86_64                                       
-#5 143.9   gdb-minimal-14.2-1.fc39.x86_64                                                
-#5 143.9   gettext-envsubst-0.22-2.fc39.x86_64                                           
-#5 143.9   gettext-libs-0.22-2.fc39.x86_64                                               
-#5 143.9   gettext-runtime-0.22-2.fc39.x86_64                                            
-#5 143.9   ghc-srpm-macros-1.6.1-2.fc39.noarch                                           
-#5 143.9   git-2.45.1-1.fc39.x86_64                                                      
-#5 143.9   git-core-2.45.1-1.fc39.x86_64                                                 
-#5 143.9   git-core-doc-2.45.1-1.fc39.noarch                                             
-#5 143.9   glibc-devel-2.38-18.fc39.x86_64                                               
-#5 143.9   glibc-gconv-extra-2.38-18.fc39.x86_64                                         
-#5 143.9   glibc-headers-x86-2.38-18.fc39.noarch                                         
-#5 143.9   gnat-srpm-macros-6-3.fc39.noarch                                              
-#5 143.9   go-srpm-macros-3.5.0-1.fc39.noarch                                            
-#5 143.9   gpgme-1.20.0-5.fc39.x86_64                                                    
-#5 143.9   groff-base-1.23.0-3.fc39.x86_64                                               
-#5 143.9   grub2-common-1:2.06-120.fc39.noarch                                           
-#5 143.9   grub2-tools-1:2.06-120.fc39.x86_64                                            
-#5 143.9   grub2-tools-minimal-1:2.06-120.fc39.x86_64                                    
-#5 143.9   grubby-8.40-73.fc39.x86_64                                                    
-#5 143.9   guile22-2.2.7-9.fc39.x86_64                                                   
-#5 143.9   http-parser-2.9.4-9.fc39.x86_64                                               
-#5 143.9   jansson-2.13.1-7.fc39.x86_64                                                  
-#5 143.9   js-jquery-3.6.4-2.fc39.noarch                                                 
-#5 143.9   kbd-2.6.3-1.fc39.x86_64                                                       
-#5 143.9   kbd-legacy-2.6.3-1.fc39.noarch                                                
-#5 143.9   kbd-misc-2.6.3-1.fc39.noarch                                                  
-#5 143.9   kernel-headers-6.9.4-100.fc39.x86_64                                          
-#5 143.9   kernel-srpm-macros-1.0-20.fc39.noarch                                         
-#5 143.9   kmod-30-6.fc39.x86_64                                                         
-#5 143.9   kmod-libs-30-6.fc39.x86_64                                                    
-#5 143.9   kpartx-0.9.5-2.fc39.x86_64                                                    
-#5 143.9   less-633-2.fc39.x86_64                                                        
-#5 143.9   libargon2-20190702-3.fc39.x86_64                                              
-#5 143.9   libbpf-2:1.1.0-4.fc39.x86_64                                                  
-#5 143.9   libcbor-0.10.2-2.fc39.x86_64                                                  
-#5 143.9   libedit-3.1-51.20240517cvs.fc39.x86_64                                        
-#5 143.9   libfdisk-2.39.4-1.fc39.x86_64                                                 
-#5 143.9   libfido2-1.13.0-3.fc39.x86_64                                                 
-#5 143.9   libgit2-1.7.2-1.fc39.x86_64                                                   
-#5 143.9   libkcapi-1.4.0-7.fc39.x86_64                                                  
-#5 143.9   libkcapi-hmaccalc-1.4.0-7.fc39.x86_64                                         
-#5 143.9   libmetalink-0.1.3-32.fc39.x86_64                                              
-#5 143.9   libmpc-1.3.1-3.fc39.x86_64                                                    
-#5 143.9   libpkgconf-1.9.5-2.fc39.x86_64                                                
-#5 143.9   libseccomp-2.5.3-6.fc39.x86_64                                                
-#5 143.9   libssh2-1.11.0-2.fc39.x86_64                                                  
-#5 143.9   libutempter-1.2.1-10.fc39.x86_64                                              
-#5 143.9   libxcrypt-devel-4.4.36-2.fc39.x86_64                                          
-#5 143.9   libxkbcommon-1.6.0-1.fc39.x86_64                                              
-#5 143.9   libzstd-devel-1.5.6-1.fc39.x86_64                                             
-#5 143.9   lua-srpm-macros-1-13.fc39.noarch                                              
-#5 143.9   make-1:4.4.1-2.fc39.x86_64                                                    
-#5 143.9   memstrack-0.2.5-2.fc39.x86_64                                                 
-#5 143.9   ncurses-6.4-7.20230520.fc39.1.x86_64                                          
-#5 143.9   nspr-4.35.0-19.fc39.x86_64                                                    
-#5 143.9   nss-3.99.0-1.fc39.x86_64                                                      
-#5 143.9   nss-softokn-3.99.0-1.fc39.x86_64                                              
-#5 143.9   nss-softokn-freebl-3.99.0-1.fc39.x86_64                                       
-#5 143.9   nss-sysinit-3.99.0-1.fc39.x86_64                                              
-#5 143.9   nss-tools-3.99.0-1.fc39.x86_64                                                
-#5 143.9   nss-util-3.99.0-1.fc39.x86_64                                                 
-#5 143.9   ocaml-srpm-macros-8-2.fc39.noarch                                             
-#5 143.9   openblas-srpm-macros-2-14.fc39.noarch                                         
-#5 143.9   openssh-9.3p1-10.fc39.x86_64                                                  
-#5 143.9   openssh-clients-9.3p1-10.fc39.x86_64                                          
-#5 143.9   openssl-1:3.1.1-4.fc39.x86_64                                                 
-#5 143.9   openssl-devel-1:3.1.1-4.fc39.x86_64                                           
-#5 143.9   os-prober-1.81-4.fc39.x86_64                                                  
-#5 143.9   package-notes-srpm-macros-0.5-9.fc39.noarch                                   
-#5 143.9   patch-2.7.6-22.fc39.x86_64                                                    
-#5 143.9   perl-AutoLoader-5.74-502.fc39.noarch                                          
-#5 143.9   perl-B-1.88-502.fc39.x86_64                                                   
-#5 143.9   perl-Carp-1.54-500.fc39.noarch                                                
-#5 143.9   perl-Class-Struct-0.68-502.fc39.noarch                                        
-#5 143.9   perl-Data-Dumper-2.188-501.fc39.x86_64                                        
-#5 143.9   perl-Digest-1.20-500.fc39.noarch                                              
-#5 143.9   perl-Digest-MD5-2.58-500.fc39.x86_64                                          
-#5 143.9   perl-DynaLoader-1.54-502.fc39.x86_64                                          
-#5 143.9   perl-Encode-4:3.19-500.fc39.x86_64                                            
-#5 143.9   perl-Errno-1.37-502.fc39.x86_64                                               
-#5 143.9   perl-Error-1:0.17029-13.fc39.noarch                                           
-#5 143.9   perl-Exporter-5.77-500.fc39.noarch                                            
-#5 143.9   perl-Fcntl-1.15-502.fc39.x86_64                                               
-#5 143.9   perl-File-Basename-2.86-502.fc39.noarch                                       
-#5 143.9   perl-File-Find-1.43-502.fc39.noarch                                           
-#5 143.9   perl-File-Path-2.18-500.fc39.noarch                                           
-#5 143.9   perl-File-Temp-1:0.231.100-500.fc39.noarch                                    
-#5 143.9   perl-File-stat-1.13-502.fc39.noarch                                           
-#5 143.9   perl-FileHandle-2.05-502.fc39.noarch                                          
-#5 143.9   perl-Getopt-Long-1:2.54-500.fc39.noarch                                       
-#5 143.9   perl-Getopt-Std-1.13-502.fc39.noarch                                          
-#5 143.9   perl-Git-2.45.1-1.fc39.noarch                                                 
-#5 143.9   perl-HTTP-Tiny-0.088-3.fc39.noarch                                            
-#5 143.9   perl-IO-1.52-502.fc39.x86_64                                                  
-#5 143.9   perl-IO-Socket-IP-0.42-1.fc39.noarch                                          
-#5 143.9   perl-IO-Socket-SSL-2.083-3.fc39.noarch                                        
-#5 143.9   perl-IPC-Open3-1.22-502.fc39.noarch                                           
-#5 143.9   perl-MIME-Base64-3.16-500.fc39.x86_64                                         
-#5 143.9   perl-Mozilla-CA-20230801-1.fc39.noarch                                        
-#5 143.9   perl-NDBM_File-1.16-502.fc39.x86_64                                           
-#5 143.9   perl-Net-SSLeay-1.92-10.fc39.x86_64                                           
-#5 143.9   perl-POSIX-2.13-502.fc39.x86_64                                               
-#5 143.9   perl-PathTools-3.89-500.fc39.x86_64                                           
-#5 143.9   perl-Pod-Escapes-1:1.07-500.fc39.noarch                                       
-#5 143.9   perl-Pod-Perldoc-3.28.01-501.fc39.noarch                                      
-#5 143.9   perl-Pod-Simple-1:3.45-4.fc39.noarch                                          
-#5 143.9   perl-Pod-Usage-4:2.03-500.fc39.noarch                                         
-#5 143.9   perl-Scalar-List-Utils-5:1.63-500.fc39.x86_64                                 
-#5 143.9   perl-SelectSaver-1.02-502.fc39.noarch                                         
-#5 143.9   perl-Socket-4:2.037-3.fc39.x86_64                                             
-#5 143.9   perl-Storable-1:3.32-500.fc39.x86_64                                          
-#5 143.9   perl-Symbol-1.09-502.fc39.noarch                                              
-#5 143.9   perl-Term-ANSIColor-5.01-501.fc39.noarch                                      
-#5 143.9   perl-Term-Cap-1.18-500.fc39.noarch                                            
-#5 143.9   perl-TermReadKey-2.38-18.fc39.x86_64                                          
-#5 143.9   perl-Text-ParseWords-3.31-500.fc39.noarch                                     
-#5 143.9   perl-Text-Tabs+Wrap-2023.0511-3.fc39.noarch                                   
-#5 143.9   perl-Time-Local-2:1.350-3.fc39.noarch                                         
-#5 143.9   perl-URI-5.21-1.fc39.noarch                                                   
-#5 143.9   perl-base-2.27-502.fc39.noarch                                                
-#5 143.9   perl-constant-1.33-501.fc39.noarch                                            
-#5 143.9   perl-if-0.61.000-502.fc39.noarch                                              
-#5 143.9   perl-interpreter-4:5.38.2-502.fc39.x86_64                                     
-#5 143.9   perl-lib-0.65-502.fc39.x86_64                                                 
-#5 143.9   perl-libnet-3.15-501.fc39.noarch                                              
-#5 143.9   perl-libs-4:5.38.2-502.fc39.x86_64                                            
-#5 143.9   perl-locale-1.10-502.fc39.noarch                                              
-#5 143.9   perl-mro-1.28-502.fc39.x86_64                                                 
-#5 143.9   perl-overload-1.37-502.fc39.noarch                                            
-#5 143.9   perl-overloading-0.02-502.fc39.noarch                                         
-#5 143.9   perl-parent-1:0.241-500.fc39.noarch                                           
-#5 143.9   perl-podlators-1:5.01-500.fc39.noarch                                         
-#5 143.9   perl-srpm-macros-1-51.fc39.noarch                                             
-#5 143.9   perl-vars-1.05-502.fc39.noarch                                                
-#5 143.9   pesign-116-2.fc39.x86_64                                                      
-#5 143.9   pigz-2.8-2.fc39.x86_64                                                        
-#5 143.9   pkgconf-1.9.5-2.fc39.x86_64                                                   
-#5 143.9   pkgconf-m4-1.9.5-2.fc39.noarch                                                
-#5 143.9   pkgconf-pkg-config-1.9.5-2.fc39.x86_64                                        
-#5 143.9   procps-ng-4.0.3-5.fc39.x86_64                                                 
-#5 143.9   pyproject-srpm-macros-1.12.0-1.fc39.noarch                                    
-#5 143.9   python-srpm-macros-3.12-4.fc39.noarch                                         
-#5 143.9   python-systemd-doc-235-5.fc39.x86_64                                          
-#5 143.9   python3-argcomplete-2.0.0-12.fc39.noarch                                      
-#5 143.9   python3-babel-2.12.1-6.fc39.noarch                                            
-#5 143.9   python3-cffi-1.15.1-6.fc39.x86_64                                             
-#5 143.9   python3-charset-normalizer-3.2.0-2.fc39.noarch                                
-#5 143.9   python3-dateutil-1:2.8.2-10.fc39.noarch                                       
-#5 143.9   python3-dbus-1.3.2-4.fc39.x86_64                                              
-#5 143.9   python3-distro-1.8.0-6.fc39.noarch                                            
-#5 143.9   python3-dnf-plugins-core-4.6.0-1.fc39.noarch                                  
-#5 143.9   python3-idna-3.7-1.fc39.noarch                                                
-#5 143.9   python3-pem-23.1.0-2.fc39.noarch                                              
-#5 143.9   python3-pip-23.2.1-2.fc39.noarch                                              
-#5 143.9   python3-ply-3.11-20.fc39.noarch                                               
-#5 143.9   python3-progressbar2-3.53.2-9.fc39.noarch                                     
-#5 143.9   python3-pycparser-2.20-11.fc39.noarch                                         
-#5 143.9   python3-pygit2-1.14.0-1.fc39.x86_64                                           
-#5 143.9   python3-pysocks-1.7.1-20.fc39.noarch                                          
-#5 143.9   python3-requests-2.28.2-5.fc39.noarch                                         
-#5 143.9   python3-rpmautospec-0.6.3-1.fc39.noarch                                       
-#5 143.9   python3-rpmautospec-core-0.1.4-1.fc39.noarch                                  
-#5 143.9   python3-rpmconf-1.1.10-2.fc39.noarch                                          
-#5 143.9   python3-setuptools-67.7.2-7.fc39.noarch                                       
-#5 143.9   python3-six-1.16.0-12.fc39.noarch                                             
-#5 143.9   python3-systemd-235-5.fc39.x86_64                                             
-#5 143.9   python3-urllib3-1.26.18-1.fc39.noarch                                         
-#5 143.9   python3-urllib3+socks-1.26.18-1.fc39.noarch                                   
-#5 143.9   python3-utils-3.3.3-4.fc39.noarch                                             
-#5 143.9   qrencode-libs-4.1.1-5.fc39.x86_64                                             
-#5 143.9   qt5-srpm-macros-5.15.13-1.fc39.noarch                                         
-#5 143.9   qt6-srpm-macros-6.6.2-1.fc39.noarch                                           
-#5 143.9   redhat-rpm-config-266-1.fc39.noarch                                           
-#5 143.9   rpm-build-4.19.1.1-1.fc39.x86_64                                              
-#5 143.9   rpmautospec-rpm-macros-0.6.3-1.fc39.noarch                                    
-#5 143.9   rpmconf-1.1.10-2.fc39.noarch                                                  
-#5 143.9   rpmconf-base-1.1.10-2.fc39.noarch                                             
-#5 143.9   rpmdevtools-9.6-4.fc39.noarch                                                 
-#5 143.9   rust-srpm-macros-26.3-1.fc39.noarch                                           
-#5 143.9   systemd-254.13-1.fc39.x86_64                                                  
-#5 143.9   systemd-networkd-254.13-1.fc39.x86_64                                         
-#5 143.9   systemd-pam-254.13-1.fc39.x86_64                                              
-#5 143.9   systemd-resolved-254.13-1.fc39.x86_64                                         
-#5 143.9   systemd-rpm-macros-254.13-1.fc39.noarch                                       
-#5 143.9   systemd-udev-254.13-1.fc39.x86_64                                             
-#5 143.9   tpm2-tools-5.5.1-1.fc39.x86_64                                                
-#5 143.9   tpm2-tss-fapi-4.0.2-1.fc39.x86_64                                             
-#5 143.9   unzip-6.0-62.fc39.x86_64                                                      
-#5 143.9   util-linux-2.39.4-1.fc39.x86_64                                               
-#5 143.9   web-assets-filesystem-5-20.fc39.noarch                                        
-#5 143.9   wget-1.21.4-1.fc39.x86_64                                                     
-#5 143.9   xkeyboard-config-2.40-1.fc39.noarch                                           
-#5 143.9   xxhash-libs-0.8.2-1.fc39.x86_64                                               
-#5 143.9   xz-5.4.4-1.fc39.x86_64                                                        
-#5 143.9   zip-3.0-39.fc39.x86_64                                                        
-#5 143.9   zlib-devel-1.2.13-4.fc39.x86_64                                               
-#5 143.9   zstd-1.5.6-1.fc39.x86_64                                                      
-#5 144.2 
-#5 145.8 Collecting edk2-pytool-extensions
-#5 145.8   Obtaining dependency information for edk2-pytool-extensions from https://files.pythonhosted.org/packages/13/42/a8f8e7f01837dbb8966323cbafe0cc27b0c3365ea8029d76e203955cd797/edk2_pytool_extensions-0.27.6-py3-none-any.whl.metadata
-#5 145.9   Downloading edk2_pytool_extensions-0.27.6-py3-none-any.whl.metadata (15 kB)
-#5 146.4 Collecting edk2-pytool-library>=0.20.0 (from edk2-pytool-extensions)
-#5 146.4   Obtaining dependency information for edk2-pytool-library>=0.20.0 from https://files.pythonhosted.org/packages/d8/d1/ef7e48cd3dc58f44c6beed82b70cbb6d38f9f6a878f8f3feaa16316460cc/edk2_pytool_library-0.21.7-py3-none-any.whl.metadata
-#5 146.4   Downloading edk2_pytool_library-0.21.7-py3-none-any.whl.metadata (12 kB)
-#5 146.6 Collecting pyyaml>=6.0.0 (from edk2-pytool-extensions)
-#5 146.6   Obtaining dependency information for pyyaml>=6.0.0 from https://files.pythonhosted.org/packages/b4/33/720548182ffa8344418126017aa1d4ab4aeec9a2275f04ce3f3573d8ace8/PyYAML-6.0.1-cp312-cp312-manylinux_2_17_x86_64.manylinux2014_x86_64.whl.metadata
-#5 146.6   Downloading PyYAML-6.0.1-cp312-cp312-manylinux_2_17_x86_64.manylinux2014_x86_64.whl.metadata (2.1 kB)
-#5 146.7 Collecting pefile>=2023.2.7 (from edk2-pytool-extensions)
-#5 146.7   Obtaining dependency information for pefile>=2023.2.7 from https://files.pythonhosted.org/packages/55/26/d0ad8b448476d0a1e8d3ea5622dc77b916db84c6aa3cb1e1c0965af948fc/pefile-2023.2.7-py3-none-any.whl.metadata
-#5 146.7   Downloading pefile-2023.2.7-py3-none-any.whl.metadata (1.4 kB)
-#5 146.8 Collecting semantic-version>=2.10.0 (from edk2-pytool-extensions)
-#5 146.8   Obtaining dependency information for semantic-version>=2.10.0 from https://files.pythonhosted.org/packages/6a/23/8146aad7d88f4fcb3a6218f41a60f6c2d4e3a72de72da1825dc7c8f7877c/semantic_version-2.10.0-py2.py3-none-any.whl.metadata
-#5 146.8   Downloading semantic_version-2.10.0-py2.py3-none-any.whl.metadata (9.7 kB)
-#5 146.9 Collecting GitPython>=3.1.30 (from edk2-pytool-extensions)
-#5 146.9   Obtaining dependency information for GitPython>=3.1.30 from https://files.pythonhosted.org/packages/e9/bd/cc3a402a6439c15c3d4294333e13042b915bbeab54edc457c723931fed3f/GitPython-3.1.43-py3-none-any.whl.metadata
-#5 146.9   Downloading GitPython-3.1.43-py3-none-any.whl.metadata (13 kB)
-#5 147.1 Collecting openpyxl>=3.1.2 (from edk2-pytool-extensions)
-#5 147.1   Obtaining dependency information for openpyxl>=3.1.2 from https://files.pythonhosted.org/packages/30/d0/abcdb0669931be3a98881e6d7851605981693e93a7924061c67d0cd9f292/openpyxl-3.1.4-py2.py3-none-any.whl.metadata
-#5 147.1   Downloading openpyxl-3.1.4-py2.py3-none-any.whl.metadata (2.5 kB)
-#5 147.3 Collecting XlsxWriter>=3.0.9 (from edk2-pytool-extensions)
-#5 147.3   Obtaining dependency information for XlsxWriter>=3.0.9 from https://files.pythonhosted.org/packages/a7/ea/53d1fe468e63e092cf16e2c18d16f50c29851242f9dd12d6a66e0d7f0d02/XlsxWriter-3.2.0-py3-none-any.whl.metadata
-#5 147.3   Downloading XlsxWriter-3.2.0-py3-none-any.whl.metadata (2.6 kB)
-#5 147.9 Collecting setuptools>=68.2.2 (from edk2-pytool-extensions)
-#5 147.9   Obtaining dependency information for setuptools>=68.2.2 from https://files.pythonhosted.org/packages/de/88/70c5767a0e43eb4451c2200f07d042a4bcd7639276003a9c54a68cfcc1f8/setuptools-70.0.0-py3-none-any.whl.metadata
-#5 147.9   Downloading setuptools-70.0.0-py3-none-any.whl.metadata (5.9 kB)
-#5 148.0 Collecting pyasn1>=0.4.8 (from edk2-pytool-library>=0.20.0->edk2-pytool-extensions)
-#5 148.0   Obtaining dependency information for pyasn1>=0.4.8 from https://files.pythonhosted.org/packages/23/7e/5f50d07d5e70a2addbccd90ac2950f81d1edd0783630651d9268d7f1db49/pyasn1-0.6.0-py2.py3-none-any.whl.metadata
-#5 148.0   Downloading pyasn1-0.6.0-py2.py3-none-any.whl.metadata (8.3 kB)
-#5 148.1 Collecting pyasn1-modules>=0.2.8 (from edk2-pytool-library>=0.20.0->edk2-pytool-extensions)
-#5 148.1   Obtaining dependency information for pyasn1-modules>=0.2.8 from https://files.pythonhosted.org/packages/13/68/8906226b15ef38e71dc926c321d2fe99de8048e9098b5dfd38343011c886/pyasn1_modules-0.4.0-py3-none-any.whl.metadata
-#5 148.2   Downloading pyasn1_modules-0.4.0-py3-none-any.whl.metadata (3.4 kB)
-#5 148.9 Collecting cryptography>=39.0.1 (from edk2-pytool-library>=0.20.0->edk2-pytool-extensions)
-#5 148.9   Obtaining dependency information for cryptography>=39.0.1 from https://files.pythonhosted.org/packages/fa/e2/b7e6e8c261536c489d9cf908769880d94bd5d9a187e166b0dc838d2e6a56/cryptography-42.0.8-cp39-abi3-manylinux_2_28_x86_64.whl.metadata
-#5 148.9   Downloading cryptography-42.0.8-cp39-abi3-manylinux_2_28_x86_64.whl.metadata (5.3 kB)
-#5 149.0 Collecting joblib>=1.3.2 (from edk2-pytool-library>=0.20.0->edk2-pytool-extensions)
-#5 149.0   Obtaining dependency information for joblib>=1.3.2 from https://files.pythonhosted.org/packages/91/29/df4b9b42f2be0b623cbd5e2140cafcaa2bef0759a00b7b70104dcfe2fb51/joblib-1.4.2-py3-none-any.whl.metadata
-#5 149.1   Downloading joblib-1.4.2-py3-none-any.whl.metadata (5.4 kB)
-#5 150.2 Collecting sqlalchemy>=2.0.0 (from edk2-pytool-library>=0.20.0->edk2-pytool-extensions)
-#5 150.2   Obtaining dependency information for sqlalchemy>=2.0.0 from https://files.pythonhosted.org/packages/60/f8/7794f3055d50e96cee04c19c7faeedacb323c7762f334660ba03bed95485/SQLAlchemy-2.0.31-cp312-cp312-manylinux_2_17_x86_64.manylinux2014_x86_64.whl.metadata
-#5 150.2   Downloading SQLAlchemy-2.0.31-cp312-cp312-manylinux_2_17_x86_64.manylinux2014_x86_64.whl.metadata (9.6 kB)
-#5 150.6 Collecting pygount>=1.6.1 (from edk2-pytool-library>=0.20.0->edk2-pytool-extensions)
-#5 150.6   Obtaining dependency information for pygount>=1.6.1 from https://files.pythonhosted.org/packages/31/aa/5f21aa9c97d141ff893a55731b6791363332a331b3167f39604ace7194b0/pygount-1.8.0-py3-none-any.whl.metadata
-#5 150.7   Downloading pygount-1.8.0-py3-none-any.whl.metadata (6.4 kB)
-#5 150.8 Collecting gitdb<5,>=4.0.1 (from GitPython>=3.1.30->edk2-pytool-extensions)
-#5 150.8   Obtaining dependency information for gitdb<5,>=4.0.1 from https://files.pythonhosted.org/packages/fd/5b/8f0c4a5bb9fd491c277c21eff7ccae71b47d43c4446c9d0c6cff2fe8c2c4/gitdb-4.0.11-py3-none-any.whl.metadata
-#5 150.8   Downloading gitdb-4.0.11-py3-none-any.whl.metadata (1.2 kB)
-#5 150.8 Collecting et-xmlfile (from openpyxl>=3.1.2->edk2-pytool-extensions)
-#5 150.8   Obtaining dependency information for et-xmlfile from https://files.pythonhosted.org/packages/96/c2/3dd434b0108730014f1b96fd286040dc3bcb70066346f7e01ec2ac95865f/et_xmlfile-1.1.0-py3-none-any.whl.metadata
-#5 150.8   Downloading et_xmlfile-1.1.0-py3-none-any.whl.metadata (1.8 kB)
-#5 151.0 Requirement already satisfied: cffi>=1.12 in /usr/lib64/python3.12/site-packages (from cryptography>=39.0.1->edk2-pytool-library>=0.20.0->edk2-pytool-extensions) (1.15.1)
-#5 151.0 Collecting smmap<6,>=3.0.1 (from gitdb<5,>=4.0.1->GitPython>=3.1.30->edk2-pytool-extensions)
-#5 151.0   Obtaining dependency information for smmap<6,>=3.0.1 from https://files.pythonhosted.org/packages/a7/a5/10f97f73544edcdef54409f1d839f6049a0d79df68adbc1ceb24d1aaca42/smmap-5.0.1-py3-none-any.whl.metadata
-#5 151.1   Downloading smmap-5.0.1-py3-none-any.whl.metadata (4.3 kB)
-#5 151.2 Collecting chardet<6,>=5 (from pygount>=1.6.1->edk2-pytool-library>=0.20.0->edk2-pytool-extensions)
-#5 151.2   Obtaining dependency information for chardet<6,>=5 from https://files.pythonhosted.org/packages/38/6f/f5fbc992a329ee4e0f288c1fe0e2ad9485ed064cac731ed2fe47dcc38cbf/chardet-5.2.0-py3-none-any.whl.metadata
-#5 151.2   Downloading chardet-5.2.0-py3-none-any.whl.metadata (3.4 kB)
-#5 151.3 Collecting pygments<3,>=2 (from pygount>=1.6.1->edk2-pytool-library>=0.20.0->edk2-pytool-extensions)
-#5 151.3   Obtaining dependency information for pygments<3,>=2 from https://files.pythonhosted.org/packages/f7/3f/01c8b82017c199075f8f788d0d906b9ffbbc5a47dc9918a945e13d5a2bda/pygments-2.18.0-py3-none-any.whl.metadata
-#5 151.3   Downloading pygments-2.18.0-py3-none-any.whl.metadata (2.5 kB)
-#5 151.5 Collecting rich<14,>=9 (from pygount>=1.6.1->edk2-pytool-library>=0.20.0->edk2-pytool-extensions)
-#5 151.5   Obtaining dependency information for rich<14,>=9 from https://files.pythonhosted.org/packages/87/67/a37f6214d0e9fe57f6ae54b2956d550ca8365857f42a1ce0392bb21d9410/rich-13.7.1-py3-none-any.whl.metadata
-#5 151.5   Downloading rich-13.7.1-py3-none-any.whl.metadata (18 kB)
-#5 151.7 Collecting typing-extensions>=4.6.0 (from sqlalchemy>=2.0.0->edk2-pytool-library>=0.20.0->edk2-pytool-extensions)
-#5 151.7   Obtaining dependency information for typing-extensions>=4.6.0 from https://files.pythonhosted.org/packages/26/9f/ad63fc0248c5379346306f8668cda6e2e2e9c95e01216d2b8ffd9ff037d0/typing_extensions-4.12.2-py3-none-any.whl.metadata
-#5 151.7   Downloading typing_extensions-4.12.2-py3-none-any.whl.metadata (3.0 kB)
-#5 152.3 Collecting greenlet!=0.4.17 (from sqlalchemy>=2.0.0->edk2-pytool-library>=0.20.0->edk2-pytool-extensions)
-#5 152.3   Obtaining dependency information for greenlet!=0.4.17 from https://files.pythonhosted.org/packages/bd/37/56b0da468a85e7704f3b2bc045015301bdf4be2184a44868c71f6dca6fe2/greenlet-3.0.3-cp312-cp312-manylinux_2_24_x86_64.manylinux_2_28_x86_64.whl.metadata
-#5 152.3   Downloading greenlet-3.0.3-cp312-cp312-manylinux_2_24_x86_64.manylinux_2_28_x86_64.whl.metadata (3.8 kB)
-#5 152.3 Requirement already satisfied: pycparser in /usr/lib/python3.12/site-packages (from cffi>=1.12->cryptography>=39.0.1->edk2-pytool-library>=0.20.0->edk2-pytool-extensions) (2.20)
-#5 152.4 Collecting markdown-it-py>=2.2.0 (from rich<14,>=9->pygount>=1.6.1->edk2-pytool-library>=0.20.0->edk2-pytool-extensions)
-#5 152.4   Obtaining dependency information for markdown-it-py>=2.2.0 from https://files.pythonhosted.org/packages/42/d7/1ec15b46af6af88f19b8e5ffea08fa375d433c998b8a7639e76935c14f1f/markdown_it_py-3.0.0-py3-none-any.whl.metadata
-#5 152.4   Downloading markdown_it_py-3.0.0-py3-none-any.whl.metadata (6.9 kB)
-#5 152.5 Collecting mdurl~=0.1 (from markdown-it-py>=2.2.0->rich<14,>=9->pygount>=1.6.1->edk2-pytool-library>=0.20.0->edk2-pytool-extensions)
-#5 152.5   Obtaining dependency information for mdurl~=0.1 from https://files.pythonhosted.org/packages/b3/38/89ba8ad64ae25be8de66a6d463314cf1eb366222074cfda9ee839c56a4b4/mdurl-0.1.2-py3-none-any.whl.metadata
-#5 152.6   Downloading mdurl-0.1.2-py3-none-any.whl.metadata (1.6 kB)
-#5 152.6 Requirement already satisfied: ply==3.11 in /usr/lib/python3.12/site-packages (from pycparser->cffi>=1.12->cryptography>=39.0.1->edk2-pytool-library>=0.20.0->edk2-pytool-extensions) (3.11)
-#5 152.6 Downloading edk2_pytool_extensions-0.27.6-py3-none-any.whl (2.3 MB)
-#5 152.9    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 2.3/2.3 MB 7.5 MB/s eta 0:00:00
-#5 153.0 Downloading edk2_pytool_library-0.21.7-py3-none-any.whl (410 kB)
-#5 153.0    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 410.9/410.9 kB 14.4 MB/s eta 0:00:00
-#5 153.0 Downloading GitPython-3.1.43-py3-none-any.whl (207 kB)
-#5 153.0    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 207.3/207.3 kB 7.6 MB/s eta 0:00:00
-#5 153.0 Downloading openpyxl-3.1.4-py2.py3-none-any.whl (251 kB)
-#5 153.1    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 251.4/251.4 kB 10.8 MB/s eta 0:00:00
-#5 153.1 Downloading pefile-2023.2.7-py3-none-any.whl (71 kB)
-#5 153.1    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 71.8/71.8 kB 4.9 MB/s eta 0:00:00
-#5 153.1 Downloading PyYAML-6.0.1-cp312-cp312-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (724 kB)
-#5 153.2    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 725.0/725.0 kB 13.2 MB/s eta 0:00:00
-#5 153.2 Downloading semantic_version-2.10.0-py2.py3-none-any.whl (15 kB)
-#5 153.2 Downloading setuptools-70.0.0-py3-none-any.whl (863 kB)
-#5 153.3    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 863.4/863.4 kB 13.2 MB/s eta 0:00:00
-#5 153.3 Downloading XlsxWriter-3.2.0-py3-none-any.whl (159 kB)
-#5 153.3    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 159.9/159.9 kB 10.1 MB/s eta 0:00:00
-#5 153.3 Downloading cryptography-42.0.8-cp39-abi3-manylinux_2_28_x86_64.whl (3.9 MB)
-#5 153.7    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 3.9/3.9 MB 10.8 MB/s eta 0:00:00
-#5 153.7 Downloading gitdb-4.0.11-py3-none-any.whl (62 kB)
-#5 153.7    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 62.7/62.7 kB 4.4 MB/s eta 0:00:00
-#5 153.7 Downloading joblib-1.4.2-py3-none-any.whl (301 kB)
-#5 153.8    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 301.8/301.8 kB 20.4 MB/s eta 0:00:00
-#5 153.8 Downloading pyasn1-0.6.0-py2.py3-none-any.whl (85 kB)
-#5 153.8    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 85.3/85.3 kB 6.1 MB/s eta 0:00:00
-#5 153.8 Downloading pyasn1_modules-0.4.0-py3-none-any.whl (181 kB)
-#5 153.8    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 181.2/181.2 kB 7.0 MB/s eta 0:00:00
-#5 153.8 Downloading pygount-1.8.0-py3-none-any.whl (28 kB)
-#5 153.9 Downloading SQLAlchemy-2.0.31-cp312-cp312-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (3.2 MB)
-#5 154.0    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 3.2/3.2 MB 23.0 MB/s eta 0:00:00
-#5 154.0 Downloading et_xmlfile-1.1.0-py3-none-any.whl (4.7 kB)
-#5 154.0 Downloading chardet-5.2.0-py3-none-any.whl (199 kB)
-#5 154.1    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 199.4/199.4 kB 13.1 MB/s eta 0:00:00
-#5 154.1 Downloading greenlet-3.0.3-cp312-cp312-manylinux_2_24_x86_64.manylinux_2_28_x86_64.whl (625 kB)
-#5 154.1    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 625.7/625.7 kB 17.8 MB/s eta 0:00:00
-#5 154.1 Downloading pygments-2.18.0-py3-none-any.whl (1.2 MB)
-#5 154.2    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 1.2/1.2 MB 20.3 MB/s eta 0:00:00
-#5 154.2 Downloading rich-13.7.1-py3-none-any.whl (240 kB)
-#5 154.2    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 240.7/240.7 kB 12.4 MB/s eta 0:00:00
-#5 154.2 Downloading smmap-5.0.1-py3-none-any.whl (24 kB)
-#5 154.3 Downloading typing_extensions-4.12.2-py3-none-any.whl (37 kB)
-#5 154.3 Downloading markdown_it_py-3.0.0-py3-none-any.whl (87 kB)
-#5 154.3    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 87.5/87.5 kB 6.0 MB/s eta 0:00:00
-#5 154.3 Downloading mdurl-0.1.2-py3-none-any.whl (10.0 kB)
-#5 154.9 Installing collected packages: XlsxWriter, typing-extensions, smmap, setuptools, semantic-version, pyyaml, pygments, pyasn1, pefile, mdurl, joblib, greenlet, et-xmlfile, chardet, sqlalchemy, pyasn1-modules, openpyxl, markdown-it-py, gitdb, rich, GitPython, cryptography, pygount, edk2-pytool-library, edk2-pytool-extensions
-#5 165.8 Successfully installed GitPython-3.1.43 XlsxWriter-3.2.0 chardet-5.2.0 cryptography-42.0.8 edk2-pytool-extensions-0.27.6 edk2-pytool-library-0.21.7 et-xmlfile-1.1.0 gitdb-4.0.11 greenlet-3.0.3 joblib-1.4.2 markdown-it-py-3.0.0 mdurl-0.1.2 openpyxl-3.1.4 pefile-2023.2.7 pyasn1-0.6.0 pyasn1-modules-0.4.0 pygments-2.18.0 pygount-1.8.0 pyyaml-6.0.1 rich-13.7.1 semantic-version-2.10.0 setuptools-70.0.0 smmap-5.0.1 sqlalchemy-2.0.31 typing-extensions-4.12.2
-#5 165.8 WARNING: Running pip as the 'root' user can result in broken permissions and conflicting behaviour with the system package manager. It is recommended to use a virtual environment instead: https://pip.pypa.io/warnings/venv
-#5 DONE 166.7s
+#4 [internal] load .dockerignore
+#4 transferring context: 2B done
+#4 DONE 0.1s
 
-#6 exporting to image
-#6 exporting layers
-#6 exporting layers 18.4s done
-#6 writing image sha256:876b60d37fd3642425b3f59e668dce4a3b3229b62aed4fdedee1a7f4a8a01e84 done
-#6 naming to docker.io/evren/shim-img:v15.8 0.0s done
-#6 DONE 18.5s
+#5 [1/3] FROM docker.io/library/fedora:40@sha256:5ce8497aeea599bf6b54ab3979133923d82aaa4f6ca5ced1812611b197c79eb0
+#5 resolve docker.io/library/fedora:40@sha256:5ce8497aeea599bf6b54ab3979133923d82aaa4f6ca5ced1812611b197c79eb0 0.1s done
+#5 sha256:5ce8497aeea599bf6b54ab3979133923d82aaa4f6ca5ced1812611b197c79eb0 1.25kB / 1.25kB done
+#5 sha256:a0f4dffd30e0af6e53f57533e79a9e32699d37d8e850132ff89f612d6ea8a300 529B / 529B done
+#5 sha256:5e22da79803c567fceb0e255f1168977259525a4279cb518016a60df025412fb 2.00kB / 2.00kB done
+#5 sha256:d4df0db66c89d7e6225ce9d3597a045fb95c020f3174af1830df88a37a871db8 0B / 80.12MB 0.1s
+#5 sha256:d4df0db66c89d7e6225ce9d3597a045fb95c020f3174af1830df88a37a871db8 5.24MB / 80.12MB 0.5s
+#5 sha256:d4df0db66c89d7e6225ce9d3597a045fb95c020f3174af1830df88a37a871db8 12.58MB / 80.12MB 0.6s
+#5 sha256:d4df0db66c89d7e6225ce9d3597a045fb95c020f3174af1830df88a37a871db8 26.21MB / 80.12MB 0.8s
+#5 sha256:d4df0db66c89d7e6225ce9d3597a045fb95c020f3174af1830df88a37a871db8 39.85MB / 80.12MB 1.0s
+#5 sha256:d4df0db66c89d7e6225ce9d3597a045fb95c020f3174af1830df88a37a871db8 46.14MB / 80.12MB 1.1s
+#5 sha256:d4df0db66c89d7e6225ce9d3597a045fb95c020f3174af1830df88a37a871db8 52.43MB / 80.12MB 1.2s
+#5 sha256:d4df0db66c89d7e6225ce9d3597a045fb95c020f3174af1830df88a37a871db8 59.77MB / 80.12MB 1.3s
+#5 sha256:d4df0db66c89d7e6225ce9d3597a045fb95c020f3174af1830df88a37a871db8 73.40MB / 80.12MB 1.5s
+#5 sha256:d4df0db66c89d7e6225ce9d3597a045fb95c020f3174af1830df88a37a871db8 80.12MB / 80.12MB 1.6s
+#5 sha256:d4df0db66c89d7e6225ce9d3597a045fb95c020f3174af1830df88a37a871db8 80.12MB / 80.12MB 1.8s done
+#5 extracting sha256:d4df0db66c89d7e6225ce9d3597a045fb95c020f3174af1830df88a37a871db8
+#5 extracting sha256:d4df0db66c89d7e6225ce9d3597a045fb95c020f3174af1830df88a37a871db8 2.6s done
+#5 DONE 5.1s
+
+#6 [2/3] RUN echo 1
+#6 0.394 1
+#6 DONE 0.4s
+
+#7 [3/3] RUN dnf upgrade -y -q && dnf install -q -y gcc make elfutils-libelf-devel git openssl-devel openssl pesign         dos2unix findutils rpm-build rpmdevtools redhat-rpm-config rpmconf rpmconf-base dnf-plugins-core         python3-pip wget python3-pem patch efitools &&     rpmdev-setuptree && mkdir -p /work/output/x86_64 && mkdir -p /work/output/ia32 &&     pip install edk2-pytool-extensions
+#7 27.75 
+#7 27.75 Upgraded:
+#7 27.75   alternatives-1.27-1.fc40.x86_64                                               
+#7 27.75   coreutils-9.4-7.fc40.x86_64                                                   
+#7 27.75   coreutils-common-9.4-7.fc40.x86_64                                            
+#7 27.75   crypto-policies-20240725-1.git28d3e2d.fc40.noarch                             
+#7 27.75   curl-8.6.0-10.fc40.x86_64                                                     
+#7 27.75   dnf-4.21.0-1.fc40.noarch                                                      
+#7 27.75   dnf-data-4.21.0-1.fc40.noarch                                                 
+#7 27.75   expat-2.6.2-1.fc40.x86_64                                                     
+#7 27.75   fedora-gpg-keys-40-2.noarch                                                   
+#7 27.75   fedora-release-common-40-39.noarch                                            
+#7 27.75   fedora-release-container-40-39.noarch                                         
+#7 27.75   fedora-release-identity-container-40-39.noarch                                
+#7 27.75   fedora-repos-40-2.noarch                                                      
+#7 27.75   findutils-1:4.9.0-9.fc40.x86_64                                               
+#7 27.75   glib2-2.80.3-1.fc40.x86_64                                                    
+#7 27.75   glibc-2.39-22.fc40.x86_64                                                     
+#7 27.75   glibc-common-2.39-22.fc40.x86_64                                              
+#7 27.75   glibc-minimal-langpack-2.39-22.fc40.x86_64                                    
+#7 27.75   gnutls-3.8.6-1.fc40.x86_64                                                    
+#7 27.75   krb5-libs-1.21.3-1.fc40.x86_64                                                
+#7 27.75   libarchive-3.7.2-4.fc40.x86_64                                                
+#7 27.75   libblkid-2.40.1-1.fc40.x86_64                                                 
+#7 27.75   libcap-2.69-8.fc40.x86_64                                                     
+#7 27.75   libcurl-8.6.0-10.fc40.x86_64                                                  
+#7 27.75   libdnf-0.73.2-1.fc40.x86_64                                                   
+#7 27.75   libeconf-0.6.2-2.fc40.x86_64                                                  
+#7 27.75   libgcc-14.2.1-1.fc40.x86_64                                                   
+#7 27.75   libgomp-14.2.1-1.fc40.x86_64                                                  
+#7 27.75   libgpg-error-1.49-1.fc40.x86_64                                               
+#7 27.75   libmodulemd-2.15.0-12.fc40.x86_64                                             
+#7 27.75   libmount-2.40.1-1.fc40.x86_64                                                 
+#7 27.75   libnghttp2-1.59.0-3.fc40.x86_64                                               
+#7 27.75   librepo-1.18.0-1.fc40.x86_64                                                  
+#7 27.75   libsmartcols-2.40.1-1.fc40.x86_64                                             
+#7 27.75   libsolv-0.7.30-1.fc40.x86_64                                                  
+#7 27.75   libstdc++-14.2.1-1.fc40.x86_64                                                
+#7 27.75   libtirpc-1.3.5-0.fc40.x86_64                                                  
+#7 27.75   libuuid-2.40.1-1.fc40.x86_64                                                  
+#7 27.75   libxml2-2.12.8-1.fc40.x86_64                                                  
+#7 27.75   libzstd-1.5.6-1.fc40.x86_64                                                   
+#7 27.75   mpfr-4.2.1-4.fc40.x86_64                                                      
+#7 27.75   p11-kit-0.25.5-1.fc40.x86_64                                                  
+#7 27.75   p11-kit-trust-0.25.5-1.fc40.x86_64                                            
+#7 27.75   pam-1.6.1-3.fc40.x86_64                                                       
+#7 27.75   pam-libs-1.6.1-3.fc40.x86_64                                                  
+#7 27.75   pcre2-10.44-1.fc40.x86_64                                                     
+#7 27.75   pcre2-syntax-10.44-1.fc40.noarch                                              
+#7 27.75   python3-3.12.4-1.fc40.x86_64                                                  
+#7 27.75   python3-dnf-4.21.0-1.fc40.noarch                                              
+#7 27.75   python3-hawkey-0.73.2-1.fc40.x86_64                                           
+#7 27.75   python3-libdnf-0.73.2-1.fc40.x86_64                                           
+#7 27.75   python3-libs-3.12.4-1.fc40.x86_64                                             
+#7 27.75   rpm-sequoia-1.7.0-1.fc40.x86_64                                               
+#7 27.75   shadow-utils-2:4.15.1-3.fc40.x86_64                                           
+#7 27.75   tpm2-tss-4.1.3-1.fc40.x86_64                                                  
+#7 27.75   tzdata-2024a-5.fc40.noarch                                                    
+#7 27.75   vim-data-2:9.1.571-1.fc40.noarch                                              
+#7 27.75   vim-minimal-2:9.1.571-1.fc40.x86_64                                           
+#7 27.75   yum-4.21.0-1.fc40.noarch                                                      
+#7 27.75   zchunk-libs-1.5.1-1.fc40.x86_64                                               
+#7 27.75   zlib-ng-compat-2.1.7-1.fc40.x86_64                                            
+#7 27.75   zstd-1.5.6-1.fc40.x86_64                                                      
+#7 27.75 
+#7 69.55 
+#7 69.55 Installed:
+#7 69.55   annobin-docs-12.60-1.fc40.noarch                                              
+#7 69.55   annobin-plugin-gcc-12.60-1.fc40.x86_64                                        
+#7 69.55   ansible-srpm-macros-1-14.fc40.noarch                                          
+#7 69.55   binutils-2.41-37.fc40.x86_64                                                  
+#7 69.55   binutils-gold-2.41-37.fc40.x86_64                                             
+#7 69.55   cmake-filesystem-3.28.2-1.fc40.x86_64                                         
+#7 69.55   cpio-2.15-1.fc40.x86_64                                                       
+#7 69.55   cpp-14.2.1-1.fc40.x86_64                                                      
+#7 69.55   crypto-policies-scripts-20240725-1.git28d3e2d.fc40.noarch                     
+#7 69.55   cryptsetup-libs-2.7.4-1.fc40.x86_64                                           
+#7 69.55   dbus-1:1.14.10-3.fc40.x86_64                                                  
+#7 69.55   dbus-broker-36-2.fc40.x86_64                                                  
+#7 69.55   dbus-common-1:1.14.10-3.fc40.noarch                                           
+#7 69.55   dbus-libs-1:1.14.10-3.fc40.x86_64                                             
+#7 69.55   debugedit-5.0-14.fc40.x86_64                                                  
+#7 69.55   device-mapper-1.02.197-1.fc40.x86_64                                          
+#7 69.55   device-mapper-libs-1.02.197-1.fc40.x86_64                                     
+#7 69.55   diffutils-3.10-5.fc40.x86_64                                                  
+#7 69.55   dnf-plugins-core-4.8.0-1.fc40.noarch                                          
+#7 69.55   dos2unix-7.5.2-1.fc40.x86_64                                                  
+#7 69.55   dracut-102-2.fc40.x86_64                                                      
+#7 69.55   dwz-0.15-6.fc40.x86_64                                                        
+#7 69.55   ed-1.20.2-1.fc40.x86_64                                                       
+#7 69.55   efi-srpm-macros-5-11.fc40.noarch                                              
+#7 69.55   efitools-1.9.2-9.fc38.x86_64                                                  
+#7 69.55   efivar-libs-39-2.fc40.x86_64                                                  
+#7 69.55   elfutils-0.191-4.fc40.x86_64                                                  
+#7 69.55   elfutils-debuginfod-client-0.191-4.fc40.x86_64                                
+#7 69.55   elfutils-libelf-devel-0.191-4.fc40.x86_64                                     
+#7 69.55   emacs-filesystem-1:29.4-9.fc40.noarch                                         
+#7 69.55   fakeroot-1.34-1.fc40.x86_64                                                   
+#7 69.55   fakeroot-libs-1.34-1.fc40.x86_64                                              
+#7 69.55   file-5.45-4.fc40.x86_64                                                       
+#7 69.55   fonts-srpm-macros-1:2.0.5-14.fc40.noarch                                      
+#7 69.55   forge-srpm-macros-0.3.1-1.fc40.noarch                                         
+#7 69.55   fpc-srpm-macros-1.3-12.fc40.noarch                                            
+#7 69.55   fuse-libs-2.9.9-21.fc40.x86_64                                                
+#7 69.55   gc-8.2.2-6.fc40.x86_64                                                        
+#7 69.55   gcc-14.2.1-1.fc40.x86_64                                                      
+#7 69.55   gcc-plugin-annobin-14.2.1-1.fc40.x86_64                                       
+#7 69.55   gdb-minimal-14.2-3.fc40.x86_64                                                
+#7 69.55   gettext-envsubst-0.22.5-2.fc40.x86_64                                         
+#7 69.55   gettext-libs-0.22.5-2.fc40.x86_64                                             
+#7 69.55   gettext-runtime-0.22.5-2.fc40.x86_64                                          
+#7 69.55   ghc-srpm-macros-1.9-1.fc40.noarch                                             
+#7 69.55   git-2.45.2-2.fc40.x86_64                                                      
+#7 69.55   git-core-2.45.2-2.fc40.x86_64                                                 
+#7 69.55   git-core-doc-2.45.2-2.fc40.noarch                                             
+#7 69.55   glibc-devel-2.39-22.fc40.x86_64                                               
+#7 69.55   glibc-gconv-extra-2.39-22.fc40.x86_64                                         
+#7 69.55   glibc-headers-x86-2.39-22.fc40.noarch                                         
+#7 69.55   gnat-srpm-macros-6-5.fc40.noarch                                              
+#7 69.55   gnutls-dane-3.8.6-1.fc40.x86_64                                               
+#7 69.55   go-srpm-macros-3.5.0-1.fc40.noarch                                            
+#7 69.55   gpgme-1.23.2-3.fc40.x86_64                                                    
+#7 69.55   groff-base-1.23.0-6.fc40.x86_64                                               
+#7 69.55   grub2-common-1:2.06-123.fc40.noarch                                           
+#7 69.55   grub2-tools-1:2.06-123.fc40.x86_64                                            
+#7 69.55   grub2-tools-minimal-1:2.06-123.fc40.x86_64                                    
+#7 69.55   grubby-8.40-75.fc40.x86_64                                                    
+#7 69.55   guile30-3.0.7-12.fc40.x86_64                                                  
+#7 69.55   http-parser-2.9.4-11.fc40.x86_64                                              
+#7 69.55   jansson-2.13.1-9.fc40.x86_64                                                  
+#7 69.55   kbd-2.6.4-3.fc40.x86_64                                                       
+#7 69.55   kbd-legacy-2.6.4-3.fc40.noarch                                                
+#7 69.55   kbd-misc-2.6.4-3.fc40.noarch                                                  
+#7 69.55   kernel-headers-6.9.4-200.fc40.x86_64                                          
+#7 69.55   kernel-srpm-macros-1.0-23.fc40.noarch                                         
+#7 69.55   kmod-31-5.fc40.x86_64                                                         
+#7 69.55   kmod-libs-31-5.fc40.x86_64                                                    
+#7 69.55   kpartx-0.9.7-7.fc40.x86_64                                                    
+#7 69.55   less-643-4.fc40.x86_64                                                        
+#7 69.55   libbpf-2:1.2.0-3.fc40.x86_64                                                  
+#7 69.55   libcbor-0.11.0-1.fc40.x86_64                                                  
+#7 69.55   libedit-3.1-51.20240517cvs.fc40.x86_64                                        
+#7 69.55   libfdisk-2.40.1-1.fc40.x86_64                                                 
+#7 69.55   libfido2-1.14.0-4.fc40.x86_64                                                 
+#7 69.55   libgit2-1.7.2-1.fc40.x86_64                                                   
+#7 69.55   libkcapi-1.4.0-10.fc40.x86_64                                                 
+#7 69.55   libkcapi-hmaccalc-1.4.0-10.fc40.x86_64                                        
+#7 69.55   libmpc-1.3.1-5.fc40.x86_64                                                    
+#7 69.55   libpkgconf-2.1.1-1.fc40.x86_64                                                
+#7 69.55   libseccomp-2.5.5-1.fc40.x86_64                                                
+#7 69.55   libssh2-1.11.0-4.fc40.x86_64                                                  
+#7 69.55   libutempter-1.2.1-13.fc40.x86_64                                              
+#7 69.55   libxcrypt-devel-4.4.36-5.fc40.x86_64                                          
+#7 69.55   libxkbcommon-1.6.0-2.fc40.x86_64                                              
+#7 69.55   libzstd-devel-1.5.6-1.fc40.x86_64                                             
+#7 69.55   lua-srpm-macros-1-13.fc40.noarch                                              
+#7 69.55   make-1:4.4.1-6.fc40.x86_64                                                    
+#7 69.55   memstrack-0.2.5-4.fc40.x86_64                                                 
+#7 69.55   mtools-4.0.44-1.fc40.x86_64                                                   
+#7 69.55   ncurses-6.4-12.20240127.fc40.x86_64                                           
+#7 69.55   nspr-4.35.0-24.fc40.x86_64                                                    
+#7 69.55   nss-3.101.0-1.fc40.x86_64                                                     
+#7 69.55   nss-softokn-3.101.0-1.fc40.x86_64                                             
+#7 69.55   nss-softokn-freebl-3.101.0-1.fc40.x86_64                                      
+#7 69.55   nss-sysinit-3.101.0-1.fc40.x86_64                                             
+#7 69.55   nss-tools-3.101.0-1.fc40.x86_64                                               
+#7 69.55   nss-util-3.101.0-1.fc40.x86_64                                                
+#7 69.55   ocaml-srpm-macros-9-3.fc40.noarch                                             
+#7 69.55   openblas-srpm-macros-2-16.fc40.noarch                                         
+#7 69.55   openssh-9.6p1-1.fc40.4.x86_64                                                 
+#7 69.55   openssh-clients-9.6p1-1.fc40.4.x86_64                                         
+#7 69.55   openssl-1:3.2.1-2.fc40.x86_64                                                 
+#7 69.55   openssl-devel-1:3.2.1-2.fc40.x86_64                                           
+#7 69.55   os-prober-1.81-6.fc40.x86_64                                                  
+#7 69.55   package-notes-srpm-macros-0.5-11.fc40.noarch                                  
+#7 69.55   parted-3.6-4.fc40.x86_64                                                      
+#7 69.55   patch-2.7.6-24.fc40.x86_64                                                    
+#7 69.55   perl-AutoLoader-5.74-506.fc40.noarch                                          
+#7 69.55   perl-B-1.88-506.fc40.x86_64                                                   
+#7 69.55   perl-Carp-1.54-502.fc40.noarch                                                
+#7 69.55   perl-Class-Struct-0.68-506.fc40.noarch                                        
+#7 69.55   perl-Data-Dumper-2.188-503.fc40.x86_64                                        
+#7 69.55   perl-Digest-1.20-502.fc40.noarch                                              
+#7 69.55   perl-Digest-MD5-2.59-3.fc40.x86_64                                            
+#7 69.55   perl-DynaLoader-1.54-506.fc40.x86_64                                          
+#7 69.55   perl-Encode-4:3.21-505.fc40.x86_64                                            
+#7 69.55   perl-Errno-1.37-506.fc40.x86_64                                               
+#7 69.55   perl-Error-1:0.17029-15.fc40.noarch                                           
+#7 69.55   perl-Exporter-5.78-3.fc40.noarch                                              
+#7 69.55   perl-Fcntl-1.15-506.fc40.x86_64                                               
+#7 69.55   perl-File-Basename-2.86-506.fc40.noarch                                       
+#7 69.55   perl-File-Find-1.43-506.fc40.noarch                                           
+#7 69.55   perl-File-Path-2.18-503.fc40.noarch                                           
+#7 69.55   perl-File-Temp-1:0.231.100-503.fc40.noarch                                    
+#7 69.55   perl-File-stat-1.13-506.fc40.noarch                                           
+#7 69.55   perl-FileHandle-2.05-506.fc40.noarch                                          
+#7 69.55   perl-Getopt-Long-1:2.57-4.fc40.noarch                                         
+#7 69.55   perl-Getopt-Std-1.13-506.fc40.noarch                                          
+#7 69.55   perl-Git-2.45.2-2.fc40.noarch                                                 
+#7 69.55   perl-HTTP-Tiny-0.088-5.fc40.noarch                                            
+#7 69.55   perl-IO-1.52-506.fc40.x86_64                                                  
+#7 69.55   perl-IO-Socket-IP-0.42-2.fc40.noarch                                          
+#7 69.55   perl-IO-Socket-SSL-2.085-1.fc40.noarch                                        
+#7 69.55   perl-IPC-Open3-1.22-506.fc40.noarch                                           
+#7 69.55   perl-MIME-Base64-3.16-503.fc40.x86_64                                         
+#7 69.55   perl-Mozilla-CA-20231213-3.fc40.noarch                                        
+#7 69.55   perl-NDBM_File-1.16-506.fc40.x86_64                                           
+#7 69.55   perl-Net-SSLeay-1.94-3.fc40.x86_64                                            
+#7 69.55   perl-POSIX-2.13-506.fc40.x86_64                                               
+#7 69.55   perl-PathTools-3.89-502.fc40.x86_64                                           
+#7 69.55   perl-Pod-Escapes-1:1.07-503.fc40.noarch                                       
+#7 69.55   perl-Pod-Perldoc-3.28.01-503.fc40.noarch                                      
+#7 69.55   perl-Pod-Simple-1:3.45-6.fc40.noarch                                          
+#7 69.55   perl-Pod-Usage-4:2.03-504.fc40.noarch                                         
+#7 69.55   perl-Scalar-List-Utils-5:1.63-503.fc40.x86_64                                 
+#7 69.55   perl-SelectSaver-1.02-506.fc40.noarch                                         
+#7 69.55   perl-Socket-4:2.038-1.fc40.x86_64                                             
+#7 69.55   perl-Storable-1:3.32-502.fc40.x86_64                                          
+#7 69.55   perl-Symbol-1.09-506.fc40.noarch                                              
+#7 69.55   perl-Term-ANSIColor-5.01-504.fc40.noarch                                      
+#7 69.55   perl-Term-Cap-1.18-503.fc40.noarch                                            
+#7 69.55   perl-TermReadKey-2.38-21.fc40.x86_64                                          
+#7 69.55   perl-Text-ParseWords-3.31-502.fc40.noarch                                     
+#7 69.55   perl-Text-Tabs+Wrap-2024.001-1.fc40.noarch                                    
+#7 69.55   perl-Time-Local-2:1.350-5.fc40.noarch                                         
+#7 69.55   perl-URI-5.28-1.fc40.noarch                                                   
+#7 69.55   perl-base-2.27-506.fc40.noarch                                                
+#7 69.55   perl-constant-1.33-503.fc40.noarch                                            
+#7 69.55   perl-if-0.61.000-506.fc40.noarch                                              
+#7 69.55   perl-interpreter-4:5.38.2-506.fc40.x86_64                                     
+#7 69.55   perl-lib-0.65-506.fc40.x86_64                                                 
+#7 69.55   perl-libnet-3.15-503.fc40.noarch                                              
+#7 69.55   perl-libs-4:5.38.2-506.fc40.x86_64                                            
+#7 69.55   perl-locale-1.10-506.fc40.noarch                                              
+#7 69.55   perl-mro-1.28-506.fc40.x86_64                                                 
+#7 69.55   perl-overload-1.37-506.fc40.noarch                                            
+#7 69.55   perl-overloading-0.02-506.fc40.noarch                                         
+#7 69.55   perl-parent-1:0.241-502.fc40.noarch                                           
+#7 69.55   perl-podlators-1:5.01-502.fc40.noarch                                         
+#7 69.55   perl-srpm-macros-1-53.fc40.noarch                                             
+#7 69.55   perl-vars-1.05-506.fc40.noarch                                                
+#7 69.55   pesign-116-3.fc40.x86_64                                                      
+#7 69.55   pigz-2.8-4.fc40.x86_64                                                        
+#7 69.55   pkgconf-2.1.1-1.fc40.x86_64                                                   
+#7 69.55   pkgconf-m4-2.1.1-1.fc40.noarch                                                
+#7 69.55   pkgconf-pkg-config-2.1.1-1.fc40.x86_64                                        
+#7 69.55   procps-ng-4.0.4-3.fc40.x86_64                                                 
+#7 69.55   protobuf-c-1.5.0-3.fc40.x86_64                                                
+#7 69.55   pyproject-srpm-macros-1.13.0-1.fc40.noarch                                    
+#7 69.55   python-srpm-macros-3.12-8.fc40.noarch                                         
+#7 69.55   python3-argcomplete-3.3.0-2.fc40.noarch                                       
+#7 69.55   python3-babel-2.15.0-1.fc40.noarch                                            
+#7 69.55   python3-cffi-1.16.0-4.fc40.x86_64                                             
+#7 69.55   python3-charset-normalizer-3.3.2-3.fc40.noarch                                
+#7 69.55   python3-dateutil-1:2.8.2-13.fc40.noarch                                       
+#7 69.55   python3-dbus-1.3.2-6.fc40.x86_64                                              
+#7 69.55   python3-distro-1.9.0-3.fc40.noarch                                            
+#7 69.55   python3-dnf-plugins-core-4.8.0-1.fc40.noarch                                  
+#7 69.55   python3-idna-3.7-1.fc40.noarch                                                
+#7 69.55   python3-pem-23.1.0-4.fc40.noarch                                              
+#7 69.55   python3-pip-23.3.2-1.fc40.noarch                                              
+#7 69.55   python3-ply-3.11-23.fc40.noarch                                               
+#7 69.55   python3-progressbar2-3.53.2-11.fc40.noarch                                    
+#7 69.55   python3-pycparser-2.20-14.fc40.noarch                                         
+#7 69.55   python3-pygit2-1.14.0-1.fc40.x86_64                                           
+#7 69.55   python3-pysocks-1.7.1-22.fc40.noarch                                          
+#7 69.55   python3-requests-2.31.0-3.fc40.noarch                                         
+#7 69.55   python3-rpmautospec-0.6.5-1.fc40.noarch                                       
+#7 69.55   python3-rpmautospec-core-0.1.5-1.fc40.noarch                                  
+#7 69.55   python3-rpmconf-1.1.10-4.fc40.noarch                                          
+#7 69.55   python3-setuptools-69.0.3-3.fc40.noarch                                       
+#7 69.55   python3-six-1.16.0-14.fc40.noarch                                             
+#7 69.55   python3-systemd-235-9.fc40.x86_64                                             
+#7 69.55   python3-typing-extensions-4.12.2-2.fc40.noarch                                
+#7 69.55   python3-urllib3-1.26.19-1.fc40.noarch                                         
+#7 69.55   python3-urllib3+socks-1.26.19-1.fc40.noarch                                   
+#7 69.55   python3-utils-3.7.0-3.fc40.noarch                                             
+#7 69.55   qrencode-libs-4.1.1-7.fc40.x86_64                                             
+#7 69.55   qt5-srpm-macros-5.15.14-2.fc40.noarch                                         
+#7 69.55   qt6-srpm-macros-6.7.2-2.fc40.noarch                                           
+#7 69.55   redhat-rpm-config-288-1.fc40.noarch                                           
+#7 69.55   rpm-build-4.19.1.1-1.fc40.x86_64                                              
+#7 69.55   rpmconf-1.1.10-4.fc40.noarch                                                  
+#7 69.55   rpmconf-base-1.1.10-4.fc40.noarch                                             
+#7 69.55   rpmdevtools-9.6-7.fc40.noarch                                                 
+#7 69.55   rust-srpm-macros-26.3-1.fc40.noarch                                           
+#7 69.55   sbsigntools-0.9.5-3.fc40.x86_64                                               
+#7 69.55   systemd-255.10-1.fc40.x86_64                                                  
+#7 69.55   systemd-libs-255.10-1.fc40.x86_64                                             
+#7 69.55   systemd-networkd-255.10-1.fc40.x86_64                                         
+#7 69.55   systemd-pam-255.10-1.fc40.x86_64                                              
+#7 69.55   systemd-resolved-255.10-1.fc40.x86_64                                         
+#7 69.55   systemd-rpm-macros-255.10-1.fc40.noarch                                       
+#7 69.55   systemd-udev-255.10-1.fc40.x86_64                                             
+#7 69.55   tpm2-tools-5.7-1.fc40.x86_64                                                  
+#7 69.55   tpm2-tss-fapi-4.1.3-1.fc40.x86_64                                             
+#7 69.55   unbound-anchor-1.20.0-1.fc40.x86_64                                           
+#7 69.55   unbound-libs-1.20.0-1.fc40.x86_64                                             
+#7 69.55   unzip-6.0-63.fc40.x86_64                                                      
+#7 69.55   util-linux-2.40.1-1.fc40.x86_64                                               
+#7 69.55   util-linux-core-2.40.1-1.fc40.x86_64                                          
+#7 69.55   wget2-2.1.0-11.fc40.x86_64                                                    
+#7 69.55   wget2-libs-2.1.0-11.fc40.x86_64                                               
+#7 69.55   wget2-wget-2.1.0-11.fc40.x86_64                                               
+#7 69.55   xkeyboard-config-2.41-1.fc40.noarch                                           
+#7 69.55   xxhash-libs-0.8.2-2.fc40.x86_64                                               
+#7 69.55   zig-srpm-macros-1-2.fc40.noarch                                               
+#7 69.55   zip-3.0-40.fc40.x86_64                                                        
+#7 69.55   zlib-ng-compat-devel-2.1.7-1.fc40.x86_64                                      
+#7 69.79 
+#7 70.95 Collecting edk2-pytool-extensions
+#7 70.99   Downloading edk2_pytool_extensions-0.27.10-py3-none-any.whl.metadata (15 kB)
+#7 71.43 Collecting edk2-pytool-library>=0.20.0 (from edk2-pytool-extensions)
+#7 71.44   Downloading edk2_pytool_library-0.21.10-py3-none-any.whl.metadata (12 kB)
+#7 71.55 Collecting pyyaml>=6.0.0 (from edk2-pytool-extensions)
+#7 71.56   Downloading PyYAML-6.0.2-cp312-cp312-manylinux_2_17_x86_64.manylinux2014_x86_64.whl.metadata (2.1 kB)
+#7 71.62 Collecting pefile>=2023.2.7 (from edk2-pytool-extensions)
+#7 71.63   Downloading pefile-2023.2.7-py3-none-any.whl.metadata (1.4 kB)
+#7 71.71 Collecting semantic-version>=2.10.0 (from edk2-pytool-extensions)
+#7 71.72   Downloading semantic_version-2.10.0-py2.py3-none-any.whl.metadata (9.7 kB)
+#7 71.82 Collecting GitPython>=3.1.30 (from edk2-pytool-extensions)
+#7 71.83   Downloading GitPython-3.1.43-py3-none-any.whl.metadata (13 kB)
+#7 71.91 Collecting openpyxl>=3.1.2 (from edk2-pytool-extensions)
+#7 71.92   Downloading openpyxl-3.1.5-py2.py3-none-any.whl.metadata (2.5 kB)
+#7 72.03 Collecting XlsxWriter>=3.0.9 (from edk2-pytool-extensions)
+#7 72.03   Downloading XlsxWriter-3.2.0-py3-none-any.whl.metadata (2.6 kB)
+#7 72.07 Requirement already satisfied: setuptools>=68.2.2 in /usr/lib/python3.12/site-packages (from edk2-pytool-extensions) (69.0.3)
+#7 72.16 Collecting pyasn1>=0.4.8 (from edk2-pytool-library>=0.20.0->edk2-pytool-extensions)
+#7 72.17   Downloading pyasn1-0.6.0-py2.py3-none-any.whl.metadata (8.3 kB)
+#7 72.29 Collecting pyasn1-modules>=0.2.8 (from edk2-pytool-library>=0.20.0->edk2-pytool-extensions)
+#7 72.30   Downloading pyasn1_modules-0.4.0-py3-none-any.whl.metadata (3.4 kB)
+#7 72.62 Collecting cryptography>=39.0.1 (from edk2-pytool-library>=0.20.0->edk2-pytool-extensions)
+#7 72.63   Downloading cryptography-43.0.0-cp39-abi3-manylinux_2_28_x86_64.whl.metadata (5.4 kB)
+#7 72.71 Collecting joblib>=1.3.2 (from edk2-pytool-library>=0.20.0->edk2-pytool-extensions)
+#7 72.72   Downloading joblib-1.4.2-py3-none-any.whl.metadata (5.4 kB)
+#7 73.21 Collecting sqlalchemy>=2.0.0 (from edk2-pytool-library>=0.20.0->edk2-pytool-extensions)
+#7 73.22   Downloading SQLAlchemy-2.0.32-cp312-cp312-manylinux_2_17_x86_64.manylinux2014_x86_64.whl.metadata (9.6 kB)
+#7 73.58 Collecting pygount>=1.6.1 (from edk2-pytool-library>=0.20.0->edk2-pytool-extensions)
+#7 73.58   Downloading pygount-1.8.0-py3-none-any.whl.metadata (6.4 kB)
+#7 73.67 Collecting gitdb<5,>=4.0.1 (from GitPython>=3.1.30->edk2-pytool-extensions)
+#7 73.68   Downloading gitdb-4.0.11-py3-none-any.whl.metadata (1.2 kB)
+#7 73.74 Collecting et-xmlfile (from openpyxl>=3.1.2->edk2-pytool-extensions)
+#7 73.75   Downloading et_xmlfile-1.1.0-py3-none-any.whl.metadata (1.8 kB)
+#7 73.82 Requirement already satisfied: cffi>=1.12 in /usr/lib64/python3.12/site-packages (from cryptography>=39.0.1->edk2-pytool-library>=0.20.0->edk2-pytool-extensions) (1.16.0)
+#7 73.89 Collecting smmap<6,>=3.0.1 (from gitdb<5,>=4.0.1->GitPython>=3.1.30->edk2-pytool-extensions)
+#7 73.89   Downloading smmap-5.0.1-py3-none-any.whl.metadata (4.3 kB)
+#7 73.99 Collecting chardet<6,>=5 (from pygount>=1.6.1->edk2-pytool-library>=0.20.0->edk2-pytool-extensions)
+#7 74.00   Downloading chardet-5.2.0-py3-none-any.whl.metadata (3.4 kB)
+#7 74.13 Collecting pygments<3,>=2 (from pygount>=1.6.1->edk2-pytool-library>=0.20.0->edk2-pytool-extensions)
+#7 74.14   Downloading pygments-2.18.0-py3-none-any.whl.metadata (2.5 kB)
+#7 74.35 Collecting rich<14,>=9 (from pygount>=1.6.1->edk2-pytool-library>=0.20.0->edk2-pytool-extensions)
+#7 74.38   Downloading rich-13.7.1-py3-none-any.whl.metadata (18 kB)
+#7 74.48 Requirement already satisfied: typing-extensions>=4.6.0 in /usr/lib/python3.12/site-packages (from sqlalchemy>=2.0.0->edk2-pytool-library>=0.20.0->edk2-pytool-extensions) (4.12.2)
+#7 74.71 Collecting greenlet!=0.4.17 (from sqlalchemy>=2.0.0->edk2-pytool-library>=0.20.0->edk2-pytool-extensions)
+#7 74.72   Downloading greenlet-3.0.3-cp312-cp312-manylinux_2_24_x86_64.manylinux_2_28_x86_64.whl.metadata (3.8 kB)
+#7 74.77 Requirement already satisfied: pycparser in /usr/lib/python3.12/site-packages (from cffi>=1.12->cryptography>=39.0.1->edk2-pytool-library>=0.20.0->edk2-pytool-extensions) (2.20)
+#7 74.93 Collecting markdown-it-py>=2.2.0 (from rich<14,>=9->pygount>=1.6.1->edk2-pytool-library>=0.20.0->edk2-pytool-extensions)
+#7 74.93   Downloading markdown_it_py-3.0.0-py3-none-any.whl.metadata (6.9 kB)
+#7 75.05 Collecting mdurl~=0.1 (from markdown-it-py>=2.2.0->rich<14,>=9->pygount>=1.6.1->edk2-pytool-library>=0.20.0->edk2-pytool-extensions)
+#7 75.06   Downloading mdurl-0.1.2-py3-none-any.whl.metadata (1.6 kB)
+#7 75.09 Requirement already satisfied: ply==3.11 in /usr/lib/python3.12/site-packages (from pycparser->cffi>=1.12->cryptography>=39.0.1->edk2-pytool-library>=0.20.0->edk2-pytool-extensions) (3.11)
+#7 75.12 Downloading edk2_pytool_extensions-0.27.10-py3-none-any.whl (2.3 MB)
+#7 75.24    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 2.3/2.3 MB 20.3 MB/s eta 0:00:00
+#7 75.25 Downloading edk2_pytool_library-0.21.10-py3-none-any.whl (410 kB)
+#7 75.28    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 411.0/411.0 kB 15.1 MB/s eta 0:00:00
+#7 75.30 Downloading GitPython-3.1.43-py3-none-any.whl (207 kB)
+#7 75.32    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 207.3/207.3 kB 8.9 MB/s eta 0:00:00
+#7 75.33 Downloading openpyxl-3.1.5-py2.py3-none-any.whl (250 kB)
+#7 75.36    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 250.9/250.9 kB 10.8 MB/s eta 0:00:00
+#7 75.37 Downloading pefile-2023.2.7-py3-none-any.whl (71 kB)
+#7 75.39    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 71.8/71.8 kB 3.4 MB/s eta 0:00:00
+#7 75.40 Downloading PyYAML-6.0.2-cp312-cp312-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (767 kB)
+#7 75.45    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 767.5/767.5 kB 17.6 MB/s eta 0:00:00
+#7 75.46 Downloading semantic_version-2.10.0-py2.py3-none-any.whl (15 kB)
+#7 75.48 Downloading XlsxWriter-3.2.0-py3-none-any.whl (159 kB)
+#7 75.51    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 159.9/159.9 kB 7.7 MB/s eta 0:00:00
+#7 75.52 Downloading cryptography-43.0.0-cp39-abi3-manylinux_2_28_x86_64.whl (4.0 MB)
+#7 75.64    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 4.0/4.0 MB 32.1 MB/s eta 0:00:00
+#7 75.65 Downloading gitdb-4.0.11-py3-none-any.whl (62 kB)
+#7 75.67    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 62.7/62.7 kB 3.0 MB/s eta 0:00:00
+#7 75.68 Downloading joblib-1.4.2-py3-none-any.whl (301 kB)
+#7 75.70    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 301.8/301.8 kB 13.6 MB/s eta 0:00:00
+#7 75.71 Downloading pyasn1-0.6.0-py2.py3-none-any.whl (85 kB)
+#7 75.73    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 85.3/85.3 kB 3.9 MB/s eta 0:00:00
+#7 75.74 Downloading pyasn1_modules-0.4.0-py3-none-any.whl (181 kB)
+#7 75.76    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 181.2/181.2 kB 8.5 MB/s eta 0:00:00
+#7 75.77 Downloading pygount-1.8.0-py3-none-any.whl (28 kB)
+#7 75.80 Downloading SQLAlchemy-2.0.32-cp312-cp312-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (3.2 MB)
+#7 75.91    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 3.2/3.2 MB 28.9 MB/s eta 0:00:00
+#7 75.92 Downloading et_xmlfile-1.1.0-py3-none-any.whl (4.7 kB)
+#7 75.95 Downloading chardet-5.2.0-py3-none-any.whl (199 kB)
+#7 75.97    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 199.4/199.4 kB 10.6 MB/s eta 0:00:00
+#7 75.99 Downloading greenlet-3.0.3-cp312-cp312-manylinux_2_24_x86_64.manylinux_2_28_x86_64.whl (625 kB)
+#7 76.02    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 625.7/625.7 kB 21.3 MB/s eta 0:00:00
+#7 76.03 Downloading pygments-2.18.0-py3-none-any.whl (1.2 MB)
+#7 76.08    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 1.2/1.2 MB 26.7 MB/s eta 0:00:00
+#7 76.08 Downloading rich-13.7.1-py3-none-any.whl (240 kB)
+#7 76.11    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 240.7/240.7 kB 10.8 MB/s eta 0:00:00
+#7 76.12 Downloading smmap-5.0.1-py3-none-any.whl (24 kB)
+#7 76.14 Downloading markdown_it_py-3.0.0-py3-none-any.whl (87 kB)
+#7 76.16    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 87.5/87.5 kB 4.1 MB/s eta 0:00:00
+#7 76.17 Downloading mdurl-0.1.2-py3-none-any.whl (10.0 kB)
+#7 76.54 Installing collected packages: XlsxWriter, smmap, semantic-version, pyyaml, pygments, pyasn1, pefile, mdurl, joblib, greenlet, et-xmlfile, chardet, sqlalchemy, pyasn1-modules, openpyxl, markdown-it-py, gitdb, rich, GitPython, cryptography, pygount, edk2-pytool-library, edk2-pytool-extensions
+#7 85.20 Successfully installed GitPython-3.1.43 XlsxWriter-3.2.0 chardet-5.2.0 cryptography-43.0.0 edk2-pytool-extensions-0.27.10 edk2-pytool-library-0.21.10 et-xmlfile-1.1.0 gitdb-4.0.11 greenlet-3.0.3 joblib-1.4.2 markdown-it-py-3.0.0 mdurl-0.1.2 openpyxl-3.1.5 pefile-2023.2.7 pyasn1-0.6.0 pyasn1-modules-0.4.0 pygments-2.18.0 pygount-1.8.0 pyyaml-6.0.2 rich-13.7.1 semantic-version-2.10.0 smmap-5.0.1 sqlalchemy-2.0.32
+#7 85.20 WARNING: Running pip as the 'root' user can result in broken permissions and conflicting behaviour with the system package manager. It is recommended to use a virtual environment instead: https://pip.pypa.io/warnings/venv
+#7 DONE 86.1s
+
+#8 exporting to image
+#8 exporting layers
+#8 exporting layers 20.0s done
+#8 writing image sha256:a334d2ebaa85d0a030592c4540685a9d270fc44d2692c62e7dbacac7a18eadad done
+#8 naming to docker.io/fabricemarie/base:v15.8 0.0s done
+#8 DONE 20.1s
+
+ [33m1 warning found (use docker --debug to expand):
+[0m - InvalidDefaultArgInFrom: Default value for ARG fedora:${FEDORAVER} results in empty or invalid base image name (line 2)
