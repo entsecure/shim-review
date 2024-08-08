@@ -43,14 +43,14 @@ echo "FIPS-140-2 attestation for Evren SecureBoot CA contains OBJ_ATTR_SENSITIVE
 openssl x509 -inform DER -outform PEM \
     -in /root/rpmbuild/SOURCES/evren_secureboot_signer_cert.der \
     -out /evren_secureboot_signer_cert.pem
-echo "Verifying FIPS-140-2 HSM attestation file validity (Evren SecureBoot Signer1)"
-python3 /verify_attestation.py /attestation2 /signer1_trust_chain.pem
-echo "FIPS-140-2 HSM attestation file for Evren SecureBoot Signer1 is valid"
-echo "Ensuring FIPS-140-2 attestation for Evren SecureBoot Signer1 has OBJ_ATTR_SENSITIVE set"
+echo "Verifying FIPS-140-2 HSM attestation file validity (Evren SecureBoot Signer2)"
+python3 /verify_attestation.py /attestation2 /signer2_trust_chain.pem
+echo "FIPS-140-2 HSM attestation file for Evren SecureBoot Signer2 is valid"
+echo "Ensuring FIPS-140-2 attestation for Evren SecureBoot Signer2 has OBJ_ATTR_SENSITIVE set"
 echo "0x0103: b'01'" > /expected_flag
 python3 /parse_v2.py /attestation2 | grep 0x0103 | tail -n 1 > /actual_flag
 cmp /expected_flag /actual_flag
-echo "FIPS-140-2 attestation for Evren SecureBoot Signer1 contains OBJ_ATTR_SENSITIVE (correct)"
+echo "FIPS-140-2 attestation for Evren SecureBoot Signer2 contains OBJ_ATTR_SENSITIVE (correct)"
 echo -e "::review Evren SecureBoot CA and Evren SecureBoot Signer attestations -- end\n\n"
 
 echo "::review certificate -- start"
@@ -96,7 +96,4 @@ echo "::review objdump -- start"
 for name in $(find /work/output/ -type f -name "shim*.efi"); do objdump -h $name; done
 echo -e "::review objdump -- end\n\n"
 
-echo "Copying all build files from container to user's work directory"
-/usr/bin/cp -ar /work/* /work2
-
-echo -e "review complete. Please check work/output/review.txt\n\n"
+echo -e "review complete without error."
